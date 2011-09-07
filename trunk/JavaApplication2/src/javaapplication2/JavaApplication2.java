@@ -10,6 +10,7 @@ package javaapplication2;
  */
 public class JavaApplication2 {
 
+    private String noma;
     /**
      * @param args the command line arguments
      */
