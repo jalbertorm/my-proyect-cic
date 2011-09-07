@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreatePermisoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreatePermisoLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{permisoController.selected.id}" title="#{bundle.CreatePermisoTitle_id}" required="true" requiredMessage="#{bundle.CreatePermisoRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle.CreatePermisoLabel_nombre}" for="nombre" />
+                    <h:inputText id="nombre" value="#{permisoController.selected.nombre}" title="#{bundle.CreatePermisoTitle_nombre}" />
+                    <h:outputLabel value="#{bundle.CreatePermisoLabel_descripcion}" for="descripcion" />
+                    <h:inputText id="descripcion" value="#{permisoController.selected.descripcion}" title="#{bundle.CreatePermisoTitle_descripcion}" />
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{permisoController.create}" value="#{bundle.CreatePermisoSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{permisoController.prepareList}" value="#{bundle.CreatePermisoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.CreatePermisoIndexLink}" action="/index" immediate="true" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

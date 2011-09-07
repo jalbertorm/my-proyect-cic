@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.prime.com.tr/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>  ..:::Galileo:::..</title>
+        <h:outputStylesheet name="css/jsfcrud.css"/>
+        <link href="#{facesContext.externalContext.request.contextPath}/resources/css/ui-lightness/skin.css" rel="stylesheet" type="text/css" />
+
+    </h:head>
+    <h:body>
+    <table align="center" width="1004px" style="height: 100px">
+            <tr>
+                <td>
+                    <img src="../resources/css/images/logo.png"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h:form>
+                        <p:menubar style="width: auto;height: auto; font-size: 12px; font-weight: bold">
+                         <p:menuitem action="/templates/templateConfiguracion.xhtml" value="Configuracion" ajax="false"/>
+                         <p:menuitem action="/templates/templateControlEscolar.xhtml" value="Control Escolar" ajax="false"/>
+                         <p:menuitem action="/templates/templateComunicacion.xhtml" value="Comunicacion" ajax="false"/>
+                         <p:menuitem action="/templates/templateControlPagos.xhtml" value="Control de Pagos" ajax="false"/>
+                         <p:menuitem action="/templates/templateGrupos.xhtml" value="Grupos" ajax="false"/>
+                         <p:menuitem action="/templates/templateDesempeno.xhtml" value="Desempeño" ajax="false"/>
+                         <p:menuitem action="/templates/templateCursos.xhtml" value="Cursos" ajax="false"/>
+                         <p:menuitem url="#" value="Reportes" ajax="false"/>
+                     </p:menubar>
+                 </h:form>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h:form>
+                    <div align="right">
+                        <span style="color: #000000">Colegio: </span>
+                        <h:selectOneMenu  requiredMessage="Deves seleccionar un Colegio" id="emisor"  value="#{sistemaController.colegio}">
+                            <f:selectItems  value="#{sistemaController.colegios}" var="i" itemLabel="#{i.nombreColegio}" itemValue="#{i}" />
+                            <f:ajax listener="#{sistemaController.Planteles}" event="change" render="plantel" />
+                        </h:selectOneMenu>
+                         <h:selectOneMenu  requiredMessage="Deves seleccionar un Plantel" id="plantel"  value="#{sistemaController.plantel}" >
+                            <f:selectItem itemLabel="--" itemValue=""/>
+                            <f:selectItems  value="#{sistemaController.plantelesPorColegio}" var="p" itemLabel="#{p.nombrePlantel}" itemValue="#{p}" />
+                            <f:ajax execute="@form" event="click"/>
+                         </h:selectOneMenu>
+                        <h:commandLink action="/index"><img alt="" border="0" src="#{facesContext.externalContext.request.contextPath}/resources/images/iconos/seditar.png"/></h:commandLink>
+                    </div>
+                    </h:form>
+                </td>
+            </tr>
+    </table>
+    <div id="body_area">
+        <div class="left">
+            <div class="left_menutop"></div>
+            <div class="left_menu_area">
+                <div align="lift">
+                    <h:form>
+                        <h:outputText value="Control Escolar" style="font-weight: bold" />                        
+                        <a><h:commandLink action="/inmuebleGrados/List_1" value="Grupos" styleClass="left_menu"/></a>
+                    </h:form>
+                </div>
+            </div>            
+        </div>
+        <div class="midarea">
+            <div class="body_textarea">
+                <p:tooltip global="true"/>
+                <ui:insert name="bodyControlEscolar"></ui:insert>
+            </div>
+        </div>
+    </div>
+    </h:body>
+</html>

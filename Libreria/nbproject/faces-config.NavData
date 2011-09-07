@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Scene Scope="Project" version="2">
+    <Scope Scope="Faces Configuration Only"/>
+    <Scope Scope="Project">
+        <Node id="rolesPermisos/Edit.xhtml" x="7432" y="32" zoom="true"/>
+        <Node id="templates/templateControlPagos.xhtml" x="1556" y="32" zoom="true"/>
+        <Node id="usuario/View.xhtml" x="13167" y="32" zoom="true"/>
+        <Node id="templates/templateLibro.xhtml" x="3157" y="32" zoom="true"/>
+        <Node id="template.xhtml" x="6879" y="32" zoom="true"/>
+        <Node id="carritocompra/Edit.xhtml" x="300" y="32" zoom="true"/>
+        <Node id="rolesPermisos/Create.xhtml" x="9724" y="32" zoom="true"/>
+        <Node id="roles/List.xhtml" x="11681" y="32" zoom="true"/>
+        <Node id="carritocompra/View.xhtml" x="612" y="32" zoom="true"/>
+        <Node id="permiso/List.xhtml" x="9447" y="32" zoom="true"/>
+        <Node id="detallecarritocompra/List.xhtml" x="4866" y="32" zoom="true"/>
+        <Node id="templates/templateControlEscolar.xhtml" x="4466" y="32" zoom="true"/>
+        <Node id="usuario/List.xhtml" x="1949" y="32" zoom="true"/>
+        <Node id="detallecarritocompra/Edit.xhtml" x="8700" y="32" zoom="true"/>
+        <Node id="carritocompra/List.xhtml" x="12855" y="32" zoom="true"/>
+        <Node id="templates/templateCursos.xhtml" x="3739" y="32" zoom="true"/>
+        <Node id="permiso/Edit.xhtml" x="10331" y="32" zoom="true"/>
+        <Node id="permiso/Create.xhtml" x="2222" y="32" zoom="true"/>
+        <Node id="catalogolibro/List.xhtml" x="12261" y="32" zoom="true"/>
+        <Node id="detallecarritocompra/Create.xhtml" x="6177" y="32" zoom="true"/>
+        <Node id="catalogolibro/View.xhtml" x="1245" y="32" zoom="true"/>
+        <Node id="detallecarritocompra/View.xhtml" x="2516" y="32" zoom="true"/>
+        <Node id="rolesPermisos/View.xhtml" x="11940" y="32" zoom="true"/>
+        <Node id="templates/templateGrupos.xhtml" x="11324" y="32" zoom="true"/>
+        <Node id="catalogolibro/Create_1.xhtml" x="6544" y="32" zoom="true"/>
+        <Node id="roles/View.xhtml" x="34" y="32" zoom="true"/>
+        <Node id="catalogolibro/Create.xhtml" x="11003" y="32" zoom="true"/>
+        <Node id="roles/Edit.xhtml" x="8112" y="32" zoom="true"/>
+        <Node id="carritocompra/CatalogoLibro.xhtml" x="4096" y="32" zoom="true"/>
+        <Node id="usuario/Create.xhtml" x="12565" y="32" zoom="true"/>
+        <Node id="rolesPermisos/List.xhtml" x="931" y="32" zoom="true"/>
+        <Node id="templates/templateProfesor.xhtml" x="7746" y="32" zoom="true"/>
+        <Node id="catalogolibro/Edit.xhtml" x="5216" y="32" zoom="true"/>
+        <Node id="usuario/Edit.xhtml" x="5520" y="32" zoom="true"/>
+        <Node id="index.xhtml" x="3502" y="32" zoom="true"/>
+        <Node id="templates/templateDesempeno.xhtml" x="5793" y="32" zoom="true"/>
+        <Node id="templates/templateConfiguracion.xhtml" x="10608" y="32" zoom="true"/>
+        <Node id="permiso/View.xhtml" x="2873" y="32" zoom="true"/>
+        <Node id="carritocompra/Create.xhtml" x="8371" y="32" zoom="true"/>
+        <Node id="roles/Create.xhtml" x="10055" y="32" zoom="true"/>
+        <Node id="templates/templateComunicacion.xhtml" x="9050" y="32" zoom="true"/>
+        <Node id="templates/index.xhtml" x="7135" y="32" zoom="true"/>
+    </Scope>
+    <Scope Scope="All Faces Configurations"/>
+</Scene>

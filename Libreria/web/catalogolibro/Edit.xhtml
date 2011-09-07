@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.prime.com.tr/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/templates/templateLibro.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateCatalogolibroTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="bodyLibros">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+                  <h:form id="formulario">
+                  <p:panel header="Actualizacion Libro" rendered="#{catalogolibroController.bandera==false}">
+
+                        <br/>
+                        <br/>
+                        <p:panel header="Informacion Subir Archivos" toggleable="true">
+                        <h:panelGrid columns="2" >
+
+                          <h:outputLabel value="Subir Portada" />
+                          <p:fileUpload fileUploadListener="#{subirPDF.handleFileUpload}" auto="true" label="Examinar"
+                                        allowTypes="*.jpg;*.png" description="*.jpg;*.png" update="messages" />
+
+                             <h:panelGroup id="messages" >
+
+                                  <h:outputLabel value="Portada:"/>
+                                  <h:outputLabel value=" "/>  <img src="../#{catalogolibroController.selected.url}#{catalogolibroController.selected.urlImagen}"/>
+
+                          </h:panelGroup>
+
+
+
+
+
+
+                    </h:panelGrid>
+                        </p:panel>
+
+                    <br/>
+                    <br/>
+
+
+
+                </p:panel>
+
+                <br/>
+
+                <p:panel header="Informaci&oacute; General Libro" rendered="#{catalogolibroController.bandera==true}">
+                    <p:panel header="Datos Com&uacute;n" toggleable="true">
+                        <h:panelGrid columns="2" cellspacing="10">
+                    <h:outputLabel value="Titulo*" for="titulo" />
+                    <h:inputText id="titulo" value="#{catalogolibroController.selected.titulo}" title="titulo" required="true" requiredMessage="titulo" size="50"/>
+                     <h:outputLabel value="Autor*" for="creador" />
+                     <h:inputText id="creador" value="#{catalogolibroController.selected.creador}" title="creador" required="true" requiredMessage="creador" size="50"/>
+                    <h:outputLabel value="Idioma*" for="idioma" />
+                    <h:inputText id="idioma" value="#{catalogolibroController.selected.idioma}" title="idioma" required="true" requiredMessage="idioma"/>
+                    <h:outputLabel value="Asunto*" for="asunto" />
+                    <h:inputText id="asunto" value="#{catalogolibroController.selected.asunto}" title="asunto" required="true" requiredMessage="asunto"/>
+
+                    <h:outputLabel value="Derechos*" for="derechos" />
+                    <h:inputText id="derechos" value="#{catalogolibroController.selected.derechos}" title="derechos" required="true" requiredMessage="derechos"/>
+                    <h:outputLabel value="Editor*" for="editor" />
+                    <h:inputText id="editor" value="#{catalogolibroController.selected.editor}" title="editor" required="true" requiredMessage="editor"/>
+                    <h:outputLabel value="Audiencia*" for="audiencia" />
+                    <h:inputText id="audiencia" value="#{catalogolibroController.selected.audiencia}" title="audiencia" />
+                     <h:outputLabel value="Procedencia*" for="procedencia" />
+                    <h:inputText id="procedencia1" value="#{catalogolibroController.selected.procedencia}" title="procedencia" required="true" requiredMessage="procedencia"/>
+                    <h:outputLabel value="Fecha Publicaci&oacute;n*" for="fechaPublicacion" />
+                    <p:calendar id="fechaPublicacion" value="#{catalogolibroController.selected.fechaPublicacion}" title="fecha Publicacion" required="true" requiredMessage="fechaPublicacion" style="height:10%;">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </p:calendar>
+
+
+
+
+                    </h:panelGrid>
+                    </p:panel>
+                        <br/>
+                        <br/>
+                        <p:panel header="Informaci&oacute;n Especifica" toggleable="true">
+                            <h:panelGrid columns="4" cellspacing="10">
+
+                            <h:outputLabel value="Colaboracion" for="colaboracion" />
+                            <h:inputText id="colaboracion" value="#{catalogolibroController.selected.colaboracion}" title="colaboracion" />
+                            <h:outputLabel value="Fuente" for="fuente" />
+                            <h:inputText id="fuente" value="#{catalogolibroController.selected.fuente}" title="fuente" required="true" requiredMessage="fuente}"/>
+                            <h:outputLabel value="Identificador" for="identificador" />
+                            <h:inputText id="identificador" value="#{catalogolibroController.selected.identificador}" title="identificador" required="true" requiredMessage="identificador}"/>
+                            <h:outputLabel value="Relacion" for="relacion" />
+                            <h:inputText id="relacion" value="#{catalogolibroController.selected.relacion}" title="relacion" required="true" requiredMessage="relacion}"/>
+                            <h:outputLabel value="Titular Derechos" for="titularDerechos" />
+                            <h:inputText id="titularDerechos" value="#{catalogolibroController.selected.titularDerechos}" title="titularDerechos}" required="true" requiredMessage="titularDerechos}"/>
+                            <h:outputLabel value=" " />
+                             <h:outputLabel value=" " />
+                            <h:outputLabel value="Cobertura*" for="cobertura" />
+                            <h:inputTextarea  id="cobertura" value="#{catalogolibroController.selected.cobertura}" title="cobertura" required="true" requiredMessage="cobertura" style="width:100%;" />
+
+                    </h:panelGrid>
+                        </p:panel>
+
+                    <br/>
+                    <br/>
+
+                    <p:panel header="Detalle Libro" toggleable="true">
+                        <h:panelGrid columns="4">
+
+                            <h:outputLabel value="M&eacute;todo Acumulaci&oacute;n" for="metodoAcumulacion" />
+                    <h:inputText id="metodoAcumulacion" value="#{catalogolibroController.selected.metodoAcumulacion}" title="metodo Acumulacion" />
+                    <h:outputLabel value="M&eacute;todo Instruccion" for="metodoInstruccion" />
+                    <h:inputText id="metodoInstruccion" value="#{catalogolibroController.selected.metodoInstruccion}" title="metodo Instruccion" />
+                    <h:outputLabel value="Periodicidad" for="periodicidad" />
+                    <h:inputText id="periodicidad" value="#{catalogolibroController.selected.periodicidad}" title="periodicidad" />
+                    <h:outputLabel value="Periodificacion" for="politicaPeriodificacion" />
+                    <h:inputText id="politicaPeriodificacion" value="#{catalogolibroController.selected.politicaPeriodificacion}" title="politica Periodificacion"/>
+                    <h:outputLabel value="Precio" for="Precio" />
+                    <h:inputText id="precio" value="#{catalogolibroController.selected.precio}" title="Precio" required="true" requiredMessage="El precio es requerido"/>
+
+
+
+
+                </h:panelGrid>
+                        </p:panel>
+
+
+                </p:panel>
+                <br />
+                <div align="center" >
+                    <p:panel >
+                        <h:panelGrid columns="2" >
+                        <input type="reset" value="Restaurar" />
+                        <h:commandButton action="#{catalogolibroController.update}" value="Guardar" />
+                        </h:panelGrid>
+                    </p:panel>
+                </div>
+               
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateRolesPaginasTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateRolesPaginasLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{rolesPaginasController.selected.id}" title="#{bundle.CreateRolesPaginasTitle_id}" required="true" requiredMessage="#{bundle.CreateRolesPaginasRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle.CreateRolesPaginasLabel_rolId}" for="rolId" />
+                    <h:selectOneMenu id="rolId" value="#{rolesPaginasController.selected.rolId}" title="#{bundle.CreateRolesPaginasTitle_rolId}" required="true" requiredMessage="#{bundle.CreateRolesPaginasRequiredMessage_rolId}">
+                        <f:selectItems value="#{rolesController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateRolesPaginasLabel_paginaId}" for="paginaId" />
+                    <h:selectOneMenu id="paginaId" value="#{rolesPaginasController.selected.paginaId}" title="#{bundle.CreateRolesPaginasTitle_paginaId}" required="true" requiredMessage="#{bundle.CreateRolesPaginasRequiredMessage_paginaId}">
+                        <f:selectItems value="#{idpaginasController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{rolesPaginasController.create}" value="#{bundle.CreateRolesPaginasSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{rolesPaginasController.prepareList}" value="#{bundle.CreateRolesPaginasShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.CreateRolesPaginasIndexLink}" action="/index" immediate="true" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

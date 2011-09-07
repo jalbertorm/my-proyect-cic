@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+  <persistence-unit name="LibreriaPU" transaction-type="JTA">
+    <jta-data-source>libreriavirtual</jta-data-source>
+    <class>escom.libreria.carrito.compras.jpa.Carritocompra</class>
+    <class>escom.libreria.carrito.compras.jpa.Detallecarritocompra</class>
+    <class>escom.libreria.catalogo.libros.jpa.Catalogolibro</class>
+    <class>escom.libreria.administrado.roles.jpa.Usuario</class>
+    <class>escom.libreria.administrado.roles.jpa.RolesPermisos</class>
+    <class>escom.libreria.administrado.roles.jpa.Roles</class>
+    <class>escom.libreria.administrado.roles.jpa.Permiso</class>
+    <class>escom.libreria.administrado.roles.jpa.Idpaginas</class>
+    <class>escom.libreria.administrado.roles.jpa.RolesPaginas</class>
+    <class>escom.libreria.administrado.roles.jpa.RolesUsuario</class>
+    <exclude-unlisted-classes>true</exclude-unlisted-classes>
+  </persistence-unit>
+</persistence>

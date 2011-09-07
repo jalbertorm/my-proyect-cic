@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateDetallecarritocompraTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateDetallecarritocompraLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{detallecarritocompraController.selected.id}" title="#{bundle.CreateDetallecarritocompraTitle_id}" required="true" requiredMessage="#{bundle.CreateDetallecarritocompraRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle.CreateDetallecarritocompraLabel_contador}" for="contador" />
+                    <h:inputText id="contador" value="#{detallecarritocompraController.selected.contador}" title="#{bundle.CreateDetallecarritocompraTitle_contador}" />
+                    <h:outputLabel value="#{bundle.CreateDetallecarritocompraLabel_idCarrito}" for="idCarrito" />
+                    <h:selectOneMenu id="idCarrito" value="#{detallecarritocompraController.selected.idCarrito}" title="#{bundle.CreateDetallecarritocompraTitle_idCarrito}" >
+                        <f:selectItems value="#{carritocompraController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateDetallecarritocompraLabel_idLibro}" for="idLibro" />
+                    <h:selectOneMenu id="idLibro" value="#{detallecarritocompraController.selected.idLibro}" title="#{bundle.CreateDetallecarritocompraTitle_idLibro}" >
+                        <f:selectItems value="#{catalogolibroController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{detallecarritocompraController.create}" value="#{bundle.CreateDetallecarritocompraSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{detallecarritocompraController.prepareList}" value="#{bundle.CreateDetallecarritocompraShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.CreateDetallecarritocompraIndexLink}" action="/index" immediate="true" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

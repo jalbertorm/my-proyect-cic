@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.prime.com.tr/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/templates/templateLibro.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateCatalogolibroTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="bodyLibros">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form id="formulario"  >
+                <p:panel header="Alta Catalogo Libro">
+                    
+                        <br/>
+                        <br/>
+                        <p:panel header="Informacion Subir Archivos" toggleable="true">
+                        <h:panelGrid columns="2" >
+
+                          <h:outputLabel value="Subir Portada" />
+                          <p:fileUpload fileUploadListener="#{subirPDF.handleFileUpload}" auto="true" label="Examinar"
+                                        allowTypes="*.jpg;*.png" description="IMAGENES" />
+                          
+                       
+
+
+  
+                          <h:outputLabel value="Subir Libro"  />
+                           <p:fileUpload fileUploadListener="#{subirPDF.handleFileUpload}" auto="true"
+                                         allowTypes="*.pdf;" description="PDF" sizeLimit="10485760"/>
+                           
+                         
+
+                          
+                          <h:outputLabel value="Subir ContraPortada" />
+                          <p:fileUpload fileUploadListener="#{subirPDF.handleFileUpload2}" auto="true"
+                                        allowTypes="*.pdf;" description="pdf" sizeLimit="10485760"/>
+                        
+                          <h:outputLabel value="Subir Resumen" />
+                         
+                          <p:fileUpload fileUploadListener="#{subirPDF.handleFileUpload3}" auto="true"
+                           allowTypes="*.pdf;" description="PDF" sizeLimit="10485760"/>
+
+                            
+                           
+                    </h:panelGrid>
+                        </p:panel>
+
+                    <br/>
+                    <br/>
+
+                    
+                    
+                </p:panel>
+                <br />
+                <div align="right">
+                    <p:panel>
+                <h:commandButton action="#{subirPDF.create}" value="Continuar" />
+                    </p:panel>
+                </div>
+                <br />
+               
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

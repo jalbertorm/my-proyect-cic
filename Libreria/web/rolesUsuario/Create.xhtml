@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateRolesUsuarioTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateRolesUsuarioLabel_usuario}" for="usuario" />
+                    <h:inputText id="usuario" value="#{rolesUsuarioController.selected.usuario}" title="#{bundle.CreateRolesUsuarioTitle_usuario}" required="true" requiredMessage="#{bundle.CreateRolesUsuarioRequiredMessage_usuario}"/>
+                    <h:outputLabel value="#{bundle.CreateRolesUsuarioLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{rolesUsuarioController.selected.id}" title="#{bundle.CreateRolesUsuarioTitle_id}" required="true" requiredMessage="#{bundle.CreateRolesUsuarioRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle.CreateRolesUsuarioLabel_rol}" for="rol" />
+                    <h:inputText id="rol" value="#{rolesUsuarioController.selected.rol}" title="#{bundle.CreateRolesUsuarioTitle_rol}" required="true" requiredMessage="#{bundle.CreateRolesUsuarioRequiredMessage_rol}"/>
+                    <h:outputLabel value="#{bundle.CreateRolesUsuarioLabel_rolId}" for="rolId" />
+                    <h:selectOneMenu id="rolId" value="#{rolesUsuarioController.selected.rolId}" title="#{bundle.CreateRolesUsuarioTitle_rolId}" required="true" requiredMessage="#{bundle.CreateRolesUsuarioRequiredMessage_rolId}">
+                        <f:selectItems value="#{rolesController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateRolesUsuarioLabel_idUsuario}" for="idUsuario" />
+                    <h:selectOneMenu id="idUsuario" value="#{rolesUsuarioController.selected.idUsuario}" title="#{bundle.CreateRolesUsuarioTitle_idUsuario}" required="true" requiredMessage="#{bundle.CreateRolesUsuarioRequiredMessage_idUsuario}">
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{rolesUsuarioController.create}" value="#{bundle.CreateRolesUsuarioSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{rolesUsuarioController.prepareList}" value="#{bundle.CreateRolesUsuarioShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.CreateRolesUsuarioIndexLink}" action="/index" immediate="true" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

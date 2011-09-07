@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.prime.com.tr/ui"
+      >
+
+    <ui:composition template="/templates/templateAdministrador.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListCatalogolibroTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="bodyAdministrador">
+       <h:form styleClass="jsfcrud_list_form">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+
+            <div align="right">
+                <br/>
+                <h:commandButton action="#{catalogolibroController.prepareCreate}" value="Nuevo Libro"/>
+            </div>
+            <br/>
+        
+
+            
+            <p:panel header="Catalogo General Libro" >
+            <h:panelGroup >
+               
+
+              <p:dataGrid var="item" value="#{catalogolibroController.libros}" columns="4"
+                    rows="12" paginator="true" effect="true"
+                    paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                    rowsPerPageTemplate="9,12,15">
+                  
+                  <p:column style="width:1px;" >
+                    <!--  <p:panel header="#{item.titulo}">-->
+                      <h:panelGrid columns="3" cellpadding="1">
+
+                         <h:commandLink action="#{catalogolibroController.prepareView(item)}"  >
+                             <img src="../resources/images/iconos/sver.png" title="Ver Libro" border="0" align="middle"/>
+                        </h:commandLink>
+                        
+                        <h:commandLink action="#{catalogolibroController.prepareEdit(item)}" >
+                             <img src="../resources/images/iconos/seditar.png" title="Editar Libro" border="0" />
+                        </h:commandLink>
+                        
+                        <h:commandLink action="#{catalogolibroController.destroy(item)}" >
+                             <img src="../resources/images/iconos/quitar.png" title="Eliminar Libro" border="0"/>
+                        </h:commandLink>
+
+                          </h:panelGrid>
+                          <h:panelGrid columns="1">
+                        
+
+                     
+                              <img src="../#{item.url}#{item.urlImagen}"   title="Libro" style="width:120px;height:180px;"/>
+                              
+                              
+                          </h:panelGrid>
+                      
+                      
+                      
+                      
+                      <!--</p:panel>-->
+                      
+                      
+                  </p:column>
+
+
+              </p:dataGrid>
+            </h:panelGroup>
+            </p:panel>
+            <br />
+            
+            
+       </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

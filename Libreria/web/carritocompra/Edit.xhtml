@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditCarritocompraTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditCarritocompraLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{carritocompraController.selected.id}" title="#{bundle.EditCarritocompraTitle_id}" required="true" requiredMessage="#{bundle.EditCarritocompraRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle.EditCarritocompraLabel_fechaCompra}" for="fechaCompra" />
+                    <h:inputText id="fechaCompra" value="#{carritocompraController.selected.fechaCompra}" title="#{bundle.EditCarritocompraTitle_fechaCompra}" required="true" requiredMessage="#{bundle.EditCarritocompraRequiredMessage_fechaCompra}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditCarritocompraLabel_total}" for="total" />
+                    <h:inputText id="total" value="#{carritocompraController.selected.total}" title="#{bundle.EditCarritocompraTitle_total}" required="true" requiredMessage="#{bundle.EditCarritocompraRequiredMessage_total}"/>
+                    <h:outputLabel value="#{bundle.EditCarritocompraLabel_estatus}" for="estatus" />
+                    <h:inputText id="estatus" value="#{carritocompraController.selected.estatus}" title="#{bundle.EditCarritocompraTitle_estatus}" required="true" requiredMessage="#{bundle.EditCarritocompraRequiredMessage_estatus}"/>
+                    <h:outputLabel value="#{bundle.EditCarritocompraLabel_idUsuario}" for="idUsuario" />
+                    <h:selectOneMenu id="idUsuario" value="#{carritocompraController.selected.idUsuario}" title="#{bundle.EditCarritocompraTitle_idUsuario}" >
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{carritocompraController.update}" value="#{bundle.EditCarritocompraSaveLink}"/>
+                <br />
+                <br />
+                <h:commandLink action="View" value="#{bundle.EditCarritocompraViewLink}" immediate="true"/>
+                <br />
+                <h:commandLink action="#{carritocompraController.prepareList}" value="#{bundle.EditCarritocompraShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.EditCarritocompraIndexLink}" action="/index" immediate="true" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+       xmlns:p="http://primefaces.prime.com.tr/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/templates/templateLibro.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewCatalogolibroTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="bodyLibros">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form id="formulario">
+
+                <p:panel header="Informaci&oacute;n General" toggleable="true" style="font-size:20px;">
+
+                            <div align="center">
+                         <h:panelGrid columns="2" cellspacing="2" cellpadding="6"  >
+
+                             <h:outputLabel value="Titulo del Libro" />
+                             #{catalogolibroController.selected.titulo}
+                             <h:outputText value="Precio:"/>
+                            <h:outputText value="#{catalogolibroController.selected.precio}" title="precio"/>
+
+                            <h:outputText value="Idioma:"/>
+                            <h:outputText value="#{catalogolibroController.selected.idioma}" title="idioma"/>
+                    <h:outputText value="Asunto:"/>
+                    <h:outputText value="#{catalogolibroController.selected.asunto}" title="asunto"/>
+                    <h:outputText value="Creador:"/>
+                    <h:outputText value="#{catalogolibroController.selected.creador}" title="creador"/>
+                    <h:outputText value="Derechos:"/>
+                    <h:outputText value="#{catalogolibroController.selected.derechos}" title="derechos"/>
+                    <h:outputText value="Editor:"/>
+                    <h:outputText value="#{catalogolibroController.selected.editor}" title="editor"/>
+                     <h:outputText value="Audiencia:"/>
+                    <h:outputText value="#{catalogolibroController.selected.audiencia}" title="audiencia"/>
+                    <h:outputText value="Procedencia:"/>
+                    <h:outputText value="#{catalogolibroController.selected.procedencia}" title="procedencia"/>
+
+
+
+                    <h:outputText value="Fecha Publicaci&oacute;n:"/>
+
+                    <h:outputText value="#{catalogolibroController.selected.fechaPublicacion}" title="fecha Publicacion">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+
+                    <h:outputText value="Cobertura:"/>
+                    <h:outputText value="#{catalogolibroController.selected.cobertura}" title="cobertura"/>
+                    <h:outputText value="Mostrar Portada:" style="color:#D20005"/>
+                    <h:selectBooleanCheckbox  value="#{catalogolibroController.ocultar}" >
+                         <f:ajax execute="@this" render="Portada" />
+                     </h:selectBooleanCheckbox>
+
+
+                        </h:panelGrid>
+                            </div>
+
+                        </p:panel>
+
+
+
+
+
+                <br/>
+                <br/>
+                <p:panel header="Portada"  footer="Imagen Oficial de #{catalogolibroController.selected.titulo}" toggleable="true"  id="Portada"  visible="#{catalogolibroController.ocultar}"  style="font-size:20px;">
+                    <center>
+                    <h:panelGrid columns="2">
+                    <img  src="../#{catalogolibroController.selected.url}#{catalogolibroController.selected.urlImagen}" align="center" alt="" title="Portada"/>
+
+
+                    </h:panelGrid>
+
+                    </center>
+       
+                  
+                </p:panel>
+
+
+                <br/><br/>
+
+                <p:panel header="Informaci&oacute;n Detallada" toggleable="true" id="id"  style="font-size:20px;">
+                        <div align="center">
+                        <h:panelGrid columns="2" cellpadding="10" cellspacing="1">
+
+
+                    <h:outputText value="Colaboracion:"/>
+                    <h:outputText value="#{catalogolibroController.selected.colaboracion}" title="colaboracion"/>
+                    <h:outputText value="Fuente:"/>
+                    <h:outputText value="#{catalogolibroController.selected.fuente}" title="fuente"/>
+                    <h:outputText value="Identificador:"/>
+                    <h:outputText value="#{catalogolibroController.selected.identificador}" title="identificador"/>
+                    <h:outputText value="Relacion:"/>
+                    <h:outputText value="#{catalogolibroController.selected.relacion}" title="relacion"/>
+                     <h:outputText value="Titular Derechos:"/>
+                    <h:outputText value="#{catalogolibroController.selected.titularDerechos}" title="titular Derechos"/>
+                        </h:panelGrid>
+                        </div>
+                </p:panel>
+
+
+<br/><br/>
+
+
+                <p:panel header="Informaci&oacute;n Especifica"  toggleable="true"  style="font-size:20px;">
+                        <div align="center">
+                        <h:panelGrid columns="2" cellpadding="10" cellspacing="1" >
+                    <h:outputText value="Formato:"/>
+                    <h:outputText value="#{catalogolibroController.selected.formato}" title="formato"/>
+                    <h:outputText value="Metodo Acumulacion:"/>
+                    <h:outputText value="#{catalogolibroController.selected.metodoAcumulacion}" title="metodo Acumulacion"/>
+                    <h:outputText value="Metodo Instruccion:"/>
+                    <h:outputText value="#{catalogolibroController.selected.metodoInstruccion}" title="metodo Instruccion"/>
+                    <h:outputText value="Periodicidad:"/>
+                    <h:outputText value="#{catalogolibroController.selected.periodicidad}" title="periodicidad"/>
+                    <h:outputText value="Politica Periodificacion:"/>
+                    <h:outputText value="#{catalogolibroController.selected.politicaPeriodificacion}" title="politica Periodificacion"/>
+
+
+
+                    <h:outputText value="Extension:"/>
+                    <h:outputText value="#{catalogolibroController.selected.tipo}" title="tipo"/>
+
+                        </h:panelGrid>
+                        </div>
+
+                </p:panel>
+
+
+
+
+                <br />
+
+
+
+                     
+                
+              
+                <br />
+
+                <div align="right">
+                    <p:panel >
+
+                        <h:commandButton action="/catalogolibro/List" value="Regresar"  immediate="true"/>
+
+                    </p:panel>
+
+
+                </div>
+               
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

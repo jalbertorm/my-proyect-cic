@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+       xmlns:p="http://primefaces.prime.com.tr/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/templates/templateLibro.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListDetallecarritocompraTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="bodyLibros">
+        <h:form styleClass="jsfcrud_list_form">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            
+            <h:panelGroup >
+
+                <p:panel header="Total">
+                    <table>
+                        <td>Monto $:</td>
+                        <td>#{carritocompraController.carrito.total}</td>
+
+                    </table>
+
+                </p:panel>
+
+                <br/>
+                <p:panel header="Detalle de carrito de compra">
+                    <p:dataTable value="#{detallecarritocompraController.listdetalleCarrito}" var="item" paginator="true" rows="3" >
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Libro"/>
+                        </f:facet>
+                        <img src="../#{item.idLibro.url}#{item.idLibro.urlImagen}" title="Libro" height="60"/>
+                    </p:column>
+
+                    <p:column headerText="Contador">
+                        <p:cellEditor>
+                        <f:facet name="output">
+                            <h:outputText value="#{item.contador}"/>
+                        </f:facet>
+
+
+                        <f:facet name="input">
+                            <p:inputText value="#{item.contador}" style="width:100%"/>
+                          </f:facet>
+                            </p:cellEditor>
+                    </p:column>
+
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Precio"/>
+                        </f:facet>
+                        <h:outputText value="#{item.idLibro.precio}"/>
+                    </p:column>
+                   
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="&nbsp;"/>
+                        </f:facet>
+                       
+
+                       
+                        <h:outputText value=" "/>
+                        <h:commandLink action="#{detallecarritocompraController.destroy(item,carritocompraController.carrito)}">
+                             <img src="../resources/images/iconos/quitar.png" title="Eliminar Libro" border="0"/>
+                        </h:commandLink>
+
+                      
+                    </p:column>
+                </p:dataTable>
+                </p:panel>
+            </h:panelGroup>
+            <br />
+            <div align="right">
+            <p:panel>
+           
+                <h:commandButton value="Regresar" action="/carritocompra/List" immediate="true" />
+            </p:panel>
+            </div>
+        </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
