@@ -17,5 +17,8 @@ public class JavaApplication2 {
         // TODO code application logic here
         
         System.out.println("hola como estas!!");
+        System.out.println("hola como estas!!");System.out.println("hola como estas!!");System.out.println("hola como estas!!");System.out.println("hola como estas!!");System.out.println("hola como estas!!");
+        System.out.println("hola como estas!!");
+        
     }
 }
