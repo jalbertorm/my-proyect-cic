@@ -86,7 +86,7 @@ public class CarritocompraController {
   
     public String crearCarritoCompra(Usuario usuario){
 
-        System.out.println("Entre");
+       
         //Carritocompra carrito=carritocompraFacade.getCarritoActivo(usuario);
          carrito= carritocompraFacade.getCarritoActivo(usuario);
         
@@ -105,17 +105,17 @@ public class CarritocompraController {
 
 
         }else{
-             System.out.println("Usted tiene un carrito de compra activado");
+           //  System.out.println("Usted tiene un carrito de compra activado");
             JsfUtil.addSuccessMessage("Usted tiene un carrito de compra activado");
           
             listaLibros=bandeja.getListLibro();
 
             if(carrito.getTotal()==null)
-              carrito.setTotal(BigDecimal.ZERO);
-              carrito.setTotal(bandeja.doCalculoPrecioGlobal().add(carrito.getTotal()));
+               carrito.setTotal(BigDecimal.ZERO);
+               carrito.setTotal(bandeja.doCalculoPrecioGlobal().add(carrito.getTotal()));
             return "/carritocompra/List";
         }
-        //current=carrito;/*Copiando la referencia*/
+        current=carrito;/*Copiando la referencia*/
         return "/carritocompra/CatalogoLibro";
 
     }

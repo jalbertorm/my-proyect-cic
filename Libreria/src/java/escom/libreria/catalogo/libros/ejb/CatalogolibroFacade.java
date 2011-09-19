@@ -91,5 +91,14 @@ public class CatalogolibroFacade {
                 }
                    return null;
     }
+     public List<Catalogolibro> getTopTen(){
+
+               TypedQuery<Catalogolibro> tipo=em.createQuery(
+                    "SELECT c FROM Catalogolibro c order by c.id DESC"
+                    ,Catalogolibro.class);
+                  List<Catalogolibro> l=tipo.getResultList();
+                  return l;
+
+     }
 
 }

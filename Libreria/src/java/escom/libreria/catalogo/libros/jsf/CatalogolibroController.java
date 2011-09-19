@@ -164,9 +164,15 @@ public class CatalogolibroController {
 
     public String prepareView(Catalogolibro libro) {
         current =libro; //(Catalogolibro)getItems().getRowData();
-        System.out.println("entre aki");
+     //   System.out.println("entre aki");
        // selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "View";
+    }
+    public String prepareView2(Catalogolibro libro) {
+        current =libro; //(Catalogolibro)getItems().getRowData();
+
+       // selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
+        return "/catalogolibro/View_1";
     }
 
     public String prepareCreate() {
@@ -400,6 +406,10 @@ public class CatalogolibroController {
             }
         }
 
+    }
+
+    public List<Catalogolibro> getLibrosTopTen(){
+        return   getFacade().getTopTen();
     }
 
 }
