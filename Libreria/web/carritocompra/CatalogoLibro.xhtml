@@ -21,46 +21,33 @@
             
            
 
-                <p:panel header="Buscar Libro Por:" toggleable="true" >
-                    <h:panelGroup >
-                        <table cellspacing="3" cellpadding="2">
-                            <tr>
-                                <td>
-                                    <h:outputLabel value="Titulo:*" for="titulo"/></td>
-                                <td>
-                                   <p:autoComplete id="titulo" value="#{catalogolibroController.titulo}" required="false" requiredMessage="Capture el titulo" size="40" completeMethod="#{catalogolibroController.complete}"/>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <h:outputText value="Autor:*"/></td>
-
-                            <td>
-                     <h:inputText id="creador" value="#{catalogolibroController.autor}" required="false" requiredMessage="Capture el autor" size="40" />
-                            </td>
-                            </tr>
-                            <tr>
-                                <td><h:outputText value="Palabra Clave:*"/></td>
-
-                                <td><h:inputText id="cobertura" value="#{catalogolibroController.palabraClava}"   required="false" size="40" /></td>
-                            </tr>
-                            <tr></tr>
-                            <tr>
-                                <td>
-                                    <h:commandButton action="#{catalogolibroController.buscarLibro}" value="Buscar Libro" /></td>
-                                <td>  <img src="../resources/images/iconos/sver.png" title="Ver" border="0"/></td>
-                                
-                            </tr>
-                            <tr>
-                                <td><p:commandLink  action="#" value="Busqueda Compleja" type="button" onclick="dlg2.show();"/></td>
-                            </tr>
-                        </table>
-                    </h:panelGroup>
+            <p:panel header="BUSCADOR DE LIBRO FAVORITO:" toggleable="true" style="font-size:15px;" >
+                <center>
+                <h:panelGrid columns="3" cellspacing="0"  >
+                      
+                                    <h:outputLabel value="TITULO" for="titulo" styleClass="textoY"/>
+                                     <h:outputLabel value="(*):" for="titulo" styleClass="textoX"/>
+                                    <p:autoComplete id="titulo" value="#{catalogolibroController.titulo}" required="false" requiredMessage="Capture el titulo" size="32" completeMethod="#{catalogolibroController.complete}"/>
+                                    <h:outputText value="AUTOR" styleClass="textoY"/>
+                                    <h:outputLabel value="(*):" for="titulo" styleClass="textoX"/>
+                                    <h:inputText id="creador" value="#{catalogolibroController.autor}" required="false" requiredMessage="Capture el autor" size="40" />
+                                    <h:outputText value="PALABRA CLAVE" styleClass="textoY"/>
+                                    <h:outputLabel value="(*):" for="titulo" styleClass="textoX"/>
+                                    <h:inputText id="cobertura" value="#{catalogolibroController.palabraClava}"   required="false" size="40" />
+                           
+                                    <h:commandLink action="#{catalogolibroController.buscarLibro}">
+                                      <img src="../resources/css/images/buscarlibro.jpg" title="buscar Libro" border="0"/>
+                                    </h:commandLink>
+                                                              
+                                    <h:commandLink  action="#" value="Busqueda Compleja" type="button" onclick="dlg2.show();"/>
+                         
+                </h:panelGrid>
+                </center>
 
                     
                 </p:panel>
 
-        <br/><br/>
+        <br/>
              <p:panel >
                 <p:dialog header="Busqueda Modesta" widgetVar="dlg2" modal="true" hideEffect="explode" height="350" width="450">
                     <p:panel header="Elementos Libro">
@@ -85,31 +72,32 @@
                 <br/>
                 <br/>
 
-                 <p:panel header="Catalogo General Libro" >
+                <p:panel header="CATALOGO DE LIBROS" style="font-size:15px;" >
             <h:panelGroup >
 
 
-                <p:dataGrid var="item" value="#{catalogolibroController.librosBusqueda}" columns="4"
+                <p:dataGrid var="item" value="#{catalogolibroController.librosBusqueda}" columns="3"
                     rows="12" paginator="true" effect="true"
                     paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                     rowsPerPageTemplate="9,12,15">
 
                   <p:column style="width:1px;" >
                     <!--  <p:panel header="#{item.titulo}">-->
-                      <h:panelGrid columns="3" cellpadding="1">
-                          <h:outputLabel value="Agregar:" style="color:#D20005;"/>
-                        <h:commandLink action="#{carritocompraController.agregarToBandeja(item)}">
-                         <img src="../resources/images/iconos/agregar.png" title="Agregar Libro al carrito" border="0"/>
-                         </h:commandLink>
+                      <h:panelGrid columns="1" cellpadding="1">
+                         
+                      
 
 
 
-                          </h:panelGrid>
-                          <h:panelGrid columns="1">
+                         
 
 
-                            
+                          <h:commandLink action="#{catalogolibroController.prepareView2(item)}">
                               <img src="../#{item.url}#{item.urlImagen}"   title="Libro" style="width:120px;height:180px;"/>
+                          </h:commandLink>
+                                <h:commandLink action="#{carritocompraController.agregarToBandeja(item)}">
+                         <img src="../resources/css/images/agregar.jpg" title="Agregar Libro al carrito" border="0"/>
+                         </h:commandLink>
 
 
                           </h:panelGrid>

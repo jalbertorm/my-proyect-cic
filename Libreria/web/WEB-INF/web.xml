@@ -54,7 +54,7 @@
 
      <error-page>
         <exception-type>javax.faces.application.ViewExpiredException</exception-type>
-        <location>/faces/templates/inicio.xhtml</location>
+        <location>/Libreria/faceles/templates/inicio.xhtml</location>
     </error-page>
 
 

@@ -6,13 +6,13 @@
       xmlns:p="http://primefaces.prime.com.tr/ui"
       xmlns:f="http://java.sun.com/jsf/core">
 
-    <ui:composition template="/templates/templateLibro.xhtml">
+    <ui:composition template="/templates/templateAdministrador.xhtml">
         <ui:define name="title">
             <h:outputText value="#{bundle.CreateCatalogolibroTitle}"></h:outputText>
         </ui:define>
-        <ui:define name="bodyLibros">
+        <ui:define name="bodyAdministrador">
             <h:panelGroup id="messagePanel" layout="block">
-                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                <h:messages errorStyle="color:red" infoStyle="color: green" layout="table" style="font-size:13px;"/>
             </h:panelGroup>
                   <h:form id="formulario">
                   <p:panel header="Actualizacion Libro" rendered="#{catalogolibroController.bandera==false}">

@@ -15,11 +15,12 @@
                 <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
             </h:panelGroup>
 
-             <div class="midarea">
-            <div id="logoGif" >
+            <div  align="center">
+
+                 <div id="" class="login_area">
             <h:form>
 
-                <p:panel header="Loging Access" footer="Access to System">
+                <p:panel header="Loging Access"  style="width:340px;">
 
 
                         <table>
@@ -27,11 +28,11 @@
                             <tr>
 
                                 <td>Usuario: </td>
-                                <td><h:inputText value="#{sistemeaControllor.user}" required="true" requiredMessage="Capture su usuario"/></td>
+                                <td><h:inputText value="#{sistemeaControllor.user}" required="true" requiredMessage="Capture su usuario" size="20"/></td>
                             </tr>
                             <tr>
                                 <td>Password:</td>
-                                <td><h:inputSecret value="#{sistemeaControllor.password}" required="true" requiredMessage="Capture su password"/></td>
+                                <td><h:inputSecret value="#{sistemeaControllor.password}" required="true" requiredMessage="Capture su password" size="20"/></td>
                             </tr>
                             <tr>
                                 <td><h:commandButton value="Acceder" action="#{sistemeaControllor.validar}"/></td>

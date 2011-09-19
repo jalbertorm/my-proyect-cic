@@ -6,11 +6,11 @@
        xmlns:p="http://primefaces.prime.com.tr/ui"
       xmlns:f="http://java.sun.com/jsf/core">
 
-    <ui:composition template="/templates/templateAdministrador.xhtml">
+    <ui:composition template="/templates/templateLibro.xhtml">
         <ui:define name="title">
             <h:outputText value="#{bundle.ViewCatalogolibroTitle}"></h:outputText>
         </ui:define>
-        <ui:define name="bodyAdministrador">
+        <ui:define name="bodyLibros">
             <h:panelGroup id="messagePanel" layout="block">
                 <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
             </h:panelGroup>
@@ -144,7 +144,7 @@
                 <div align="right">
                     <p:panel >
 
-                        <h:commandButton action="/catalogolibro/List" value="Regresar"  immediate="true"/>
+                        <h:commandButton action="/carritocompra/CatalogoLibro" value="Regresar"  immediate="true"/>
 
                     </p:panel>
 

@@ -11,7 +11,7 @@ body{
 	background-attachment: scroll;
 	background-image: url(images/bg.jpg);
 	background-repeat: repeat-x;
-	background-position: top;
+	baickground-position: top;
 	background-color: #f7fcf8;
 }
 ul{
@@ -78,7 +78,7 @@ ul{
 	float: none;
 	/*background-image: url(images/topbanner_bg.jpg);*/
 	background-repeat: no-repeat;
-	background-position: center;        
+	background-position: center;
 }
 .logo {
 	background-image: url(images/logo.png);
@@ -460,7 +460,7 @@ ul{
 	margin-bottom: 0;
 	margin-left: auto;
 	font-family: Tahoma;
-	font-size: 12px;
+	font-size: 14px;
 	font-style: normal;
 	line-height: normal;
 	font-weight: bold;
@@ -468,7 +468,7 @@ ul{
 	text-transform: none;
 	color: #dcd66e;
 	text-decoration: none;
-	float: none;	
+	float: none;
 	padding-right: 0px;
 	padding-bottom: 0px;
 	padding-left: 0px;
@@ -537,6 +537,25 @@ ul{
 	padding-right: 15px;
 	padding-bottom: 0px;
 	padding-left: 0px;
+}
+
+.right_menu {
+	font-family: Arial;
+	font-size: 11px;
+	font-weight: bold;
+	font-variant: normal;
+	color: #386060;
+	text-decoration: none;
+	background-image: url(images/menu_active.png);
+	background-repeat: no-repeat;
+	margin: 0px;
+	float: right;
+	height: 20px;
+	width: 200px;
+	padding-top: 5px;
+	padding-right: 20px;
+	padding-bottom: 0px;
+	padding-right: 0px;
 }
 .left_menu:HOVER {
 	font-family: Arial;
@@ -634,12 +653,19 @@ ul{
 .midarea {
 	margin: 0px;
 	float: left;
-	height: 820px;
-	width: 600px;
+	/*height: 720px;*/
+	width: 740px;
 	padding-top: 0px;
 	padding-right: 0px;
 	padding-bottom: 0px;
 	padding-left: 15px; /*marge izquierdo*/
+        background-color:#FFDEAD;
+        position: relative;
+        margin-left: auto;
+        margin-right: auto;
+        border:2px solid #F5DA81;
+        left:70px;
+        top:10px;
 }
 .head {
 	font-family: Georgia;
@@ -654,6 +680,7 @@ ul{
 	padding-right: 0px;
 	padding-bottom: 20px;
 	padding-left: 0px;
+        
 }
 .body_textarea {
 	font-family: Arial;
@@ -662,12 +689,15 @@ ul{
 	color: #3c6f75;
 	text-decoration: none;
 	margin: 0px;
-	float: left;
+	float:none;
 	width: 700px;  /*Tamaño cuadro texto*/
 	padding-top: 0px;
 	padding-right: 0px;
 	padding-bottom: 0px;
-	padding-left: 0px;
+	padding-left: 16px;
+       
+       
+        
 }
 .readmore {
 	font-family: Arial;
@@ -722,9 +752,10 @@ ul{
 .right {
 	margin: 0px;
 	padding: 0px;
-	float: left;
+	float: right;
 	height: 820px;
 	width: 170px;
+        padding-right:20px;
 }
 .events_head {
 	font-family: Georgia;
@@ -1901,11 +1932,13 @@ background-color: #d0910b;
 /*inicio */
  #logoGif {
      position:absolute;
-     left:450px;
-     top:180px;
-     width:350px;
+     left:50px;
+     top:140px;
+     width:450px;
      height:230;
      z-index:1;
+    
+
  }
 .wijmo-wijmenu-horizontal,
 .wijmo-wijmenu-list {
@@ -1924,9 +1957,27 @@ h1{
 }
 
 
-.footer {height:50px; background:url(images/fbg.jpg) 0 0 repeat-x;}
-.footer a {font-size:11px; font-weight:bold; text-decoration:none; color:#695D3C}
-.footer a:hover {text-decoration:underline}
-.footer td {font-size:11px; font-weight:bold; color:#695D3C}
+
 
 /*----------------------------------------------------------------contactpage----------------------------------------------------------------------------------------*/
+
+.cont_header_txt {
+	margin:0px 0px 2px 0px;
+}
+.cont_header_txt td {
+	background:url(images/title2_center.jpg) 0 0 repeat-x;
+	vertical-align:middle;
+	font-size:12px;
+	font-weight:bold;
+	text-transform:uppercase;
+	color:#695D3B;
+	height:29px;
+}
+.cont_header_txt em	{
+	color:#E50029;
+	font-size:14px;
+	font-weight:bold;
+	font-style:normal;
+	vertical-align:middle;
+	text-decoration:none;
+}

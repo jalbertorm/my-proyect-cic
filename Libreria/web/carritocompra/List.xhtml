@@ -19,19 +19,19 @@
             <br/>
 
             <h:panelGroup >
-                <p:panel header="Tabla General Carrito Compra">
+                <p:panel header="TABLA GENERAL  COMPRA" style="font-size:15px;" >
                     <h:panelGrid columns="2">
 
-                        <h:outputText value="Fecha de Compra:"/>
-                        <h:outputText value="#{carritocompraController.carrito.fechaCompra}">
+                        <h:outputText value="Fecha de Compra:" styleClass="textoY"/>
+                        <h:outputText value="#{carritocompraController.carrito.fechaCompra}" styleClass="textoX">
                             <f:convertDateTime dateStyle="short"/>
                         </h:outputText>
-                         <h:outputText value="Activo:"/>
-                         <h:outputText value="NO" rendered="#{carritocompraController.carrito.estatus==false}"/>
-                        <h:outputText value="SI" rendered="#{carritocompraController.carrito.estatus}"/>
-                         <h:outputText value="Total:  $"/>
+                         <h:outputText value="Activo:"  styleClass="textoY"/>
+                         <h:outputText value="NO" rendered="#{carritocompraController.carrito.estatus==false}"  styleClass="textoX"/>
+                        <h:outputText value="SI" rendered="#{carritocompraController.carrito.estatus}"  styleClass="textoX"/>
+                         <h:outputText value="Total$:"  styleClass="textoX"/>
 
-                        <h:outputText value="#{carritocompraController.carrito.total}">
+                        <h:outputText value="#{carritocompraController.carrito.total} pesos"  styleClass="textoX">
                             <f:convertNumber maxFractionDigits="5"/>
                         </h:outputText>
 
@@ -44,35 +44,33 @@
                 <br/>
 
                 <p:panel>
-                <p:panel header="Detalle de carrito de compra">
+                    <p:panel header="DETALLE DE CARRITO DE COMPRA" style="font-size:15px;">
                     <p:dataTable value="#{carritocompraController.listaLibros}" var="item" paginator="true" rows="3" >
                     <p:column>
                         <f:facet name="header">
-                            <h:outputText value="Libro"/>
+                            <h:outputText value="LIBRO" style="font-size:13px;"/>
                         </f:facet>
                         <img src="../#{item.url}#{item.urlImagen}" title="Libro" height="60"/>
                     </p:column>
 
-                    <p:column headerText="Titulo">
-                        <p:cellEditor>
-                        <f:facet name="output">
-                            <h:outputText value="#{item.titulo}"/>
+                    <p:column headerText="TITULO" style="font-size:13px;">
+                       
+                        <f:facet name="header">
+                            <h:outputText value="TITULO"  style="font-size:13px;"/>
                         </f:facet>
+                        <h:outputText value="#{item.titulo}"  style="font-size:13px;" styleClass="textoX"/>
 
-
-                        <f:facet name="input">
-                            <p:inputText value="#{item.titulo}" style="width:100%"/>
-                          </f:facet>
-                            </p:cellEditor>
+                        
                     </p:column>
 
-                    <p:column>
+                    <p:column  headerText="PRECIO">
                         <f:facet name="header">
-                            <h:outputText value="Precio"/>
+                           <h:outputText value="PRECIO" style="font-size:13px;"/>
                         </f:facet>
-                        <h:outputText value="#{item.precio}">
+                         <h:outputText value="$ #{item.precio} pesos"  style="font-size:13px;">
                             <f:convertNumber maxFractionDigits="7"/>
                         </h:outputText>
+                        
                     </p:column>
 
                     <p:column>
@@ -97,7 +95,7 @@
 <br/><br/>
             <p:panel>
             <div align="center">
-                <h:commandButton value="Volver a la Pagina anterior"  action="/carritocompra/CatalogoLibro" immediate="true"/>
+                <h:commandButton value="Ir a Comprar"  action="/carritocompra/CatalogoLibro" immediate="true"/>
             </div>
             </p:panel>
         </h:form>
