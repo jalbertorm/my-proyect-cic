@@ -18,22 +18,24 @@
             </h:panelGroup>
             <h:panelGroup >
                 <br/><br/>
-                <div align="center"
+                <div align="right">
 
-                    <h:commandLink action="#{tipoArticuloController.prepareCreate}" value="Guardar"/>
+                    <h:commandButton action="#{tipoArticuloController.prepareCreate}" value="Crear Nuevo"/>
 
 
                 </div>
+                <br/><br/>
+                <p:panel header="CATALOGO TIPO DE ARTICULO">
                 <p:dataTable value="#{tipoArticuloController.listTipoArticulo}" var="item" >
                     <p:column>
                         <f:facet name="header">
-                            <h:outputText value="#{bundle.ListTipoArticuloTitle_id}"/>
+                            <h:outputText value="ID"/>
                         </f:facet>
                         <h:outputText value="#{item.id}"/>
                     </p:column>
                     <p:column>
                         <f:facet name="header">
-                            <h:outputText value="#{bundle.ListTipoArticuloTitle_descripcion}"/>
+                            <h:outputText value="DESCRIPCION"/>
                         </f:facet>
                         <h:outputText value="#{item.descripcion}"/>
                     </p:column>
@@ -41,20 +43,22 @@
                         <f:facet name="header">
                             <h:outputText value="&nbsp;"/>
                         </f:facet>
-                        <h:commandLink action="#{tipoArticuloController.prepareView(item)}" value="#{bundle.ListTipoArticuloViewLink}">
+                        <h:commandLink action="#{tipoArticuloController.prepareView(item)}" >
                              <img src="./../resources/iconos/sver.png" alt="" title="Ver"/>
                         </h:commandLink>
                         <h:outputText value=" "/>
-                        <h:commandLink action="#{tipoArticuloController.prepareEdit(item)}" value="#{bundle.ListTipoArticuloEditLink}">
-                             <img src="./../resources/iconos/seditar.png" alt="" title="Ver"/>
+                        <h:commandLink action="#{tipoArticuloController.prepareEdit(item)}" >
+                             <img src="./../resources/iconos/seditar.png" alt="" title="Editar"/>
                         </h:commandLink>
                         <h:outputText value=" "/>
-                        <h:commandLink action="#{tipoArticuloController.destroy(item)}" value="#{bundle.ListTipoArticuloDestroyLink}">
-                             <img src="./../resources/iconos/quitar.png" alt="" title="Ver"/>
+                        <h:commandLink action="#{tipoArticuloController.destroy(item)}" >
+                             <img src="./../resources/iconos/quitar.png" alt="" title="Eliminar"/>
                         </h:commandLink>
                     </p:column>
                 </p:dataTable>
+                </p:panel>
             </h:panelGroup>
+
             
         </h:form>
         </ui:define>
