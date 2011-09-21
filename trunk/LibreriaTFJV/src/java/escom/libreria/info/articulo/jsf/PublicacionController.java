@@ -100,7 +100,7 @@ public class PublicacionController {
             JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
             return null;
         }
-        return prepareView(current);
+        return prepareList();
     }
 
     public String prepareEdit(Publicacion p) {

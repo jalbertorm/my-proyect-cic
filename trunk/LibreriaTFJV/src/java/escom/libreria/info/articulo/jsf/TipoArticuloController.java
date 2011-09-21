@@ -40,8 +40,8 @@ public class TipoArticuloController {
     }
 
     public List<TipoArticulo> getListTipoArticulo(){
-       List<TipoArticulo> l=getFacade().findAll();
-       return l;
+      return getFacade().findAll();
+     
     }
     private TipoArticuloFacade getFacade() {
         return ejbFacade;
@@ -72,7 +72,7 @@ public class TipoArticuloController {
 
     public String prepareView(TipoArticulo p) {
        current=p;
-        selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
+        // selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "View";
     }
 
@@ -86,7 +86,7 @@ public class TipoArticuloController {
         try {
             getFacade().create(current);
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("TipoArticuloCreated"));
-            return prepareView(current);
+            return prepareList();
         } catch (Exception e) {
             JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
             return null;
@@ -95,14 +95,14 @@ public class TipoArticuloController {
 
     public String prepareEdit(TipoArticulo p) {
        current=p;
-        selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
+    //    selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "Edit";
     }
 
     public String update() {
         try {
             getFacade().edit(current);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("TipoArticuloUpdated"));
+            JsfUtil.addSuccessMessage(("TipoArticulo Updated"));
             return "View";
         } catch (Exception e) {
             JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
