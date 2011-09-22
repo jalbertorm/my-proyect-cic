@@ -3,102 +3,93 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.prime.com.tr/ui">
 
-    <ui:composition template="/template.xhtml">
+    <ui:composition template="/templates/templateNovedades.xhtml">
         <ui:define name="title">
             <h:outputText value="#{bundle.ListArticuloTitle}"></h:outputText>
         </ui:define>
-        <ui:define name="body">
+        <ui:define name="bodyNovedades">
         <h:form styleClass="jsfcrud_list_form">
             <h:panelGroup id="messagePanel" layout="block">
                 <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
             </h:panelGroup>
-            <h:outputText escape="false" value="#{bundle.ListArticuloEmpty}" rendered="#{articuloController.items.rowCount == 0}"/>
-            <h:panelGroup rendered="#{articuloController.items.rowCount > 0}">
-                <h:outputText value="#{articuloController.pagination.pageFirstItem + 1}..#{articuloController.pagination.pageLastItem + 1}/#{articuloController.pagination.itemsCount}"/>&nbsp;
-                <h:commandLink action="#{articuloController.previous}" value="#{bundle.Previous} #{articuloController.pagination.pageSize}" rendered="#{articuloController.pagination.hasPreviousPage}"/>&nbsp;
-                <h:commandLink action="#{articuloController.next}" value="#{bundle.Next} #{articuloController.pagination.pageSize}" rendered="#{articuloController.pagination.hasNextPage}"/>&nbsp;
-                <h:dataTable value="#{articuloController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
-                    <h:column>
+
+            <br/>
+            <br/>
+            <div align="right">
+
+                <h:commandButton action="#{articuloController.prepareCreate}" value="Crear Nuevo"/>
+
+            </div>
+            <br/>  <br/>
+            <p:panel header="CATALOG DE ARTICULO">
+            <h:panelGroup >
+               
+                <p:dataTable value="#{articuloController.listArticulos}" var="item"  paginator="true" rows="5">
+                     <p:column>
                         <f:facet name="header">
-                            <h:outputText value="#{bundle.ListArticuloTitle_id}"/>
+                            <h:outputText value="PROVEEDOR"/>
                         </f:facet>
-                        <h:outputText value="#{item.id}"/>
-                    </h:column>
-                    <h:column>
+                        <h:outputText value="#{item.idProveedor.nombre}"/>
+                    </p:column>
+                    
+                    <p:column>
                         <f:facet name="header">
-                            <h:outputText value="#{bundle.ListArticuloTitle_unidad}"/>
+                            <h:outputText value="UNIDAD"/>
                         </f:facet>
                         <h:outputText value="#{item.unidad}"/>
-                    </h:column>
-                    <h:column>
+                    </p:column>
+                    <p:column>
                         <f:facet name="header">
-                            <h:outputText value="#{bundle.ListArticuloTitle_divisa}"/>
+                            <h:outputText value="DIVISA"/>
                         </f:facet>
                         <h:outputText value="#{item.divisa}"/>
-                    </h:column>
-                    <h:column>
+                    </p:column>
+                    <p:column>
                         <f:facet name="header">
-                            <h:outputText value="#{bundle.ListArticuloTitle_costo}"/>
+                            <h:outputText value="COSTO"/>
                         </f:facet>
                         <h:outputText value="#{item.costo}"/>
-                    </h:column>
-                    <h:column>
+                    </p:column>
+                   
+                    
+                   
+                    <p:column>
                         <f:facet name="header">
-                            <h:outputText value="#{bundle.ListArticuloTitle_precioUnitario}"/>
+                            <h:outputText value="PUBLICACION"/>
                         </f:facet>
-                        <h:outputText value="#{item.precioUnitario}"/>
-                    </h:column>
-                    <h:column>
+                        <h:outputText value="#{item.idIdc.editorial}"/>
+                    </p:column>
+                    <p:column>
                         <f:facet name="header">
-                            <h:outputText value="#{bundle.ListArticuloTitle_descripcion}"/>
+                            <h:outputText value="TIPO"/>
                         </f:facet>
-                        <h:outputText value="#{item.descripcion}"/>
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputText value="#{bundle.ListArticuloTitle_fechaRegistro}"/>
-                        </f:facet>
-                        <h:outputText value="#{item.fechaRegistro}">
-                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
-                        </h:outputText>
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputText value="#{bundle.ListArticuloTitle_idProveedor}"/>
-                        </f:facet>
-                        <h:outputText value="#{item.idProveedor}"/>
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputText value="#{bundle.ListArticuloTitle_idIdc}"/>
-                        </f:facet>
-                        <h:outputText value="#{item.idIdc}"/>
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputText value="#{bundle.ListArticuloTitle_idTipo}"/>
-                        </f:facet>
-                        <h:outputText value="#{item.idTipo}"/>
-                    </h:column>
-                    <h:column>
+                        <h:outputText value="#{item.idTipo.descripcion}"/>
+                    </p:column>
+                    <p:column>
                         <f:facet name="header">
                             <h:outputText value="&nbsp;"/>
                         </f:facet>
-                        <h:commandLink action="#{articuloController.prepareView}" value="#{bundle.ListArticuloViewLink}"/>
-                        <h:outputText value=" "/>
-                        <h:commandLink action="#{articuloController.prepareEdit}" value="#{bundle.ListArticuloEditLink}"/>
-                        <h:outputText value=" "/>
-                        <h:commandLink action="#{articuloController.destroy}" value="#{bundle.ListArticuloDestroyLink}"/>
-                    </h:column>
-                </h:dataTable>
+                        <h:commandLink action="#{articuloController.prepareView(item)}">
+                              <img src="./../resources/iconos/sver.png" alt="" title="Ver"/>
+                        </h:commandLink>
+                        
+                        <h:commandLink action="#{articuloController.prepareEdit(item)}" >
+                              <img src="./../resources/iconos/seditar.png" alt="" title="Ver"/>
+                        </h:commandLink>
+                        
+                        <h:commandLink action="#{articuloController.destroy(item)}">  
+                            <img src="./../resources/iconos/quitar.png" alt="" title="Ver"/>
+                        </h:commandLink>
+
+                    </p:column>
+                 </p:dataTable>
             </h:panelGroup>
-            <br />
-            <h:commandLink action="#{articuloController.prepareCreate}" value="#{bundle.ListArticuloCreateLink}"/>
-            <br />
-            <br />
-            <h:commandLink value="#{bundle.ListArticuloIndexLink}" action="/index" immediate="true" />
+            </p:panel>
+           
+           
         </h:form>
         </ui:define>
     </ui:composition>
