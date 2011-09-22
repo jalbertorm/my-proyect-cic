@@ -28,9 +28,9 @@
                 <br/>
                 <p:panel header="CATALOGO PUBLICACIONES">
                
-                    <p:dataTable value="#{publicacionController.listaPublicacion}" var="item" paginator="true">
+                    <p:dataTable value="#{publicacionController.listaPublicacion}" var="item" paginator="true" rows="6">
                    
-                    <p:column style="width:50px;">
+                    <p:column style="width:10px;">
                         <f:facet name="header">
                             <h:outputText value="PERIODO MES"/>
                         </f:facet>
@@ -38,7 +38,7 @@
                             <f:convertDateTime pattern="MM/dd/yyyy" />
                         </h:outputText>
                     </p:column>
-                    <p:column style="width: 50px;">
+                    <p:column style="width:10px;">
                         <f:facet name="header">
                             <h:outputText value="PERIODO ANIO"/>
                         </f:facet>
