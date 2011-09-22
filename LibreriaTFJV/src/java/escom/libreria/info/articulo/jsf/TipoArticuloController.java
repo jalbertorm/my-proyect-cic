@@ -4,6 +4,7 @@ import escom.libreria.info.articulo.jpa.TipoArticulo;
 import escom.libreria.info.articulo.jsf.util.JsfUtil;
 import escom.libreria.info.articulo.jsf.util.PaginationHelper;
 import escom.libreria.info.articulo.ejb.TipoArticuloFacade;
+import java.io.Serializable;
 import java.util.List;
 
 import java.util.ResourceBundle;
@@ -20,7 +21,7 @@ import javax.faces.model.SelectItem;
 
 @ManagedBean (name="tipoArticuloController")
 @SessionScoped
-public class TipoArticuloController {
+public class TipoArticuloController implements Serializable{
 
     private TipoArticulo current;
     private DataModel items = null;

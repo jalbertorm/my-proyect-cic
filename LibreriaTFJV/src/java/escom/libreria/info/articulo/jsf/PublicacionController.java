@@ -4,6 +4,7 @@ import escom.libreria.info.articulo.jpa.Publicacion;
 import escom.libreria.info.articulo.jsf.util.JsfUtil;
 import escom.libreria.info.articulo.jsf.util.PaginationHelper;
 import escom.libreria.info.articulo.ejb.PublicacionFacade;
+import java.io.Serializable;
 import java.util.List;
 
 import java.util.ResourceBundle;
@@ -20,7 +21,7 @@ import javax.faces.model.SelectItem;
 
 @ManagedBean (name="publicacionController")
 @SessionScoped
-public class PublicacionController {
+public class PublicacionController implements Serializable{
 
     private Publicacion current;
     private DataModel items = null;
