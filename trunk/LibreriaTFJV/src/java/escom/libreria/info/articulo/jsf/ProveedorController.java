@@ -73,13 +73,13 @@ public class ProveedorController {
 
     public String prepareView(Proveedor p) {
        current=p;
-        selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
+        //selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "View";
     }
 
     public String prepareCreate() {
         current = new Proveedor();
-        selectedItemIndex = -1;
+        //selectedItemIndex = -1;
         return "Create";
     }
 
@@ -93,7 +93,7 @@ public class ProveedorController {
             JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
             return null;
         }
-        return prepareList();
+        return prepareView(current);
     }
 
     public String prepareEdit(Proveedor p) {
