@@ -4,6 +4,7 @@ import escom.libreria.info.articulo.jpa.Proveedor;
 import escom.libreria.info.articulo.jsf.util.JsfUtil;
 import escom.libreria.info.articulo.jsf.util.PaginationHelper;
 import escom.libreria.info.articulo.ejb.ProveedorFacade;
+import java.io.Serializable;
 import java.util.List;
 
 import java.util.ResourceBundle;
@@ -20,7 +21,7 @@ import javax.faces.model.SelectItem;
 
 @ManagedBean (name="proveedorController")
 @SessionScoped
-public class ProveedorController {
+public class ProveedorController implements Serializable{
 
     private Proveedor current;
     private DataModel items = null;
