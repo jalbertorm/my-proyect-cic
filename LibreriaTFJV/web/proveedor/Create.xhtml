@@ -19,18 +19,21 @@
                 <br/>
                 <br/>
                 <p:panel header="CATALOGO DE PROVEEDORES">
-                <h:panelGrid columns="2">
+                    <center>
+                        <h:panelGrid columns="2" cellspacing="15">
                    
-                    <h:outputLabel value="#{bundle.CreateProveedorLabel_nombre}" for="nombre" />
-                    <h:inputText id="nombre" value="#{proveedorController.selected.nombre}" title="#{bundle.CreateProveedorTitle_nombre}" required="true" requiredMessage="#{bundle.CreateProveedorRequiredMessage_nombre}"/>
+                    <h:outputLabel value="NOMBRE PROVEEDOR:" for="nombre" />
+                    <h:inputText id="nombre" value="#{proveedorController.selected.nombre}" title="#{bundle.CreateProveedorTitle_nombre}" required="true" requiredMessage="#{bundle.CreateProveedorRequiredMessage_nombre}" size="35"/>
                 </h:panelGrid>
+                    </center>
                 <br />
                 </p:panel>
                 <br />
                 <br />
                 <p:panel>
-
+                    <div align="center">
                     <h:commandButton action="#{proveedorController.create}" value="Guardar" />
+                    </div>
                
                 </p:panel>
             </h:form>

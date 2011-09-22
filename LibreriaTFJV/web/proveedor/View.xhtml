@@ -17,12 +17,14 @@
             <h:form>
                 <br/> <br/>
                 <p:panel header="VER PROVEEDOR">
+                    <center>
                 <h:panelGrid columns="2">
                     <h:outputText value="ID:"/>
                     <h:outputText value="#{proveedorController.selected.id}" title="#{bundle.ViewProveedorTitle_id}"/>
-                    <h:outputText value="#{bundle.ViewProveedorLabel_nombre}"/>
+                    <h:outputText value="NOMBRE:"/>
                     <h:outputText value="#{proveedorController.selected.nombre}" title="#{bundle.ViewProveedorTitle_nombre}"/>
                 </h:panelGrid>
+                    </center>
                 <br />
                 </p:panel>
 
