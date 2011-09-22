@@ -4,6 +4,7 @@ import escom.libreria.info.articulo.jpa.Articulo;
 import escom.libreria.info.articulo.jsf.util.JsfUtil;
 import escom.libreria.info.articulo.jsf.util.PaginationHelper;
 import escom.libreria.info.articulo.ejb.ArticuloFacade;
+import java.util.List;
 
 import java.util.ResourceBundle;
 import javax.ejb.EJB;
@@ -42,6 +43,10 @@ public class ArticuloController {
         return ejbFacade;
     }
 
+    public List<Articulo>  getListArticulos(){
+        return getFacade().findAll();
+    }
+
     public PaginationHelper getPagination() {
         if (pagination == null) {
             pagination = new PaginationHelper(10) {
@@ -65,9 +70,9 @@ public class ArticuloController {
         return "List";
     }
 
-    public String prepareView() {
-        current = (Articulo)getItems().getRowData();
-        selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
+    public String prepareView(Articulo p) {
+      current=p;
+       // selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "View";
     }
 
@@ -80,24 +85,24 @@ public class ArticuloController {
     public String create() {
         try {
             getFacade().create(current);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("ArticuloCreated"));
-            return prepareCreate();
+            JsfUtil.addSuccessMessage(("Articulo Created"));
+            return prepareView(current);
         } catch (Exception e) {
             JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
             return null;
         }
     }
 
-    public String prepareEdit() {
-        current = (Articulo)getItems().getRowData();
-        selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
+    public String prepareEdit(Articulo p) {
+      current=p;
+       // selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "Edit";
     }
 
     public String update() {
         try {
             getFacade().edit(current);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("ArticuloUpdated"));
+            JsfUtil.addSuccessMessage(("Articulo Updated"));
             return "View";
         } catch (Exception e) {
             JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
@@ -105,11 +110,14 @@ public class ArticuloController {
         }
     }
 
-    public String destroy() {
-        current = (Articulo)getItems().getRowData();
-        selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
-        performDestroy();
-        recreateModel();
+    public String destroy(Articulo p) {
+      current=p;
+      getFacade().remove(p);
+       // selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
+        //performDestroy();
+        //recreateModel();
+      JsfUtil.addSuccessMessage("Articulo eliminado satisfactoriamente");
+
         return "List";
     }
 
