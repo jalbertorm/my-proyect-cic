@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.prime.com.tr/ui">
+
+    <ui:composition template="/templates/templateNovedades.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateClienteTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="bodyNovedades">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form styleClass="jsfcrud_list_form">
+                <p:panel header="NUEVO CLIENTE">
+                         <center>
+                <h:panelGrid columns="2">
+                   
+                    <h:outputLabel value="#{bundle.CreateClienteLabel_nombre}" for="nombre" />
+                    <h:inputText id="nombre" value="#{clienteController.selected.nombre}" title="#{bundle.CreateClienteTitle_nombre}" required="true" requiredMessage="#{bundle.CreateClienteRequiredMessage_nombre}"/>
+                    <h:outputLabel value="#{bundle.CreateClienteLabel_paterno}" for="paterno" />
+                    <h:inputText id="paterno" value="#{clienteController.selected.paterno}" title="#{bundle.CreateClienteTitle_paterno}" required="true" requiredMessage="#{bundle.CreateClienteRequiredMessage_paterno}"/>
+                    <h:outputLabel value="#{bundle.CreateClienteLabel_materno}" for="materno" />
+                    <h:inputText id="materno" value="#{clienteController.selected.materno}" title="#{bundle.CreateClienteTitle_materno}" required="true" requiredMessage="#{bundle.CreateClienteRequiredMessage_materno}"/>
+                    <h:outputLabel value="#{bundle.CreateClienteLabel_telefono}" for="telefono" />
+                    <h:inputText id="telefono" value="#{clienteController.selected.telefono}" title="#{bundle.CreateClienteTitle_telefono}" required="true" requiredMessage="#{bundle.CreateClienteRequiredMessage_telefono}"/>
+                    <h:outputLabel value="#{bundle.CreateClienteLabel_fax}" for="fax" />
+                    <h:inputText id="fax" value="#{clienteController.selected.fax}" title="#{bundle.CreateClienteTitle_fax}" />
+                    <h:outputLabel value="#{bundle.CreateClienteLabel_email}" for="email" />
+                    <h:inputText id="email" value="#{clienteController.selected.email}" title="#{bundle.CreateClienteTitle_email}" required="true" requiredMessage="#{bundle.CreateClienteRequiredMessage_email}"/>
+                   
+                    <h:outputLabel value="#{bundle.CreateClienteLabel_mod}" for="mod" />
+                    <h:inputText id="mod" value="#{clienteController.selected.modS}" title="#{bundle.CreateClienteTitle_mod}" required="true" requiredMessage="#{bundle.CreateClienteRequiredMessage_mod}"/>
+                     <h:outputLabel value="ID" for="id" />
+                    <h:inputText id="id" value="#{clienteController.selected.id}" title="#{bundle.CreateClienteTitle_id}" required="true" requiredMessage="#{bundle.CreateClienteRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle.CreateClienteLabel_password}" for="password" />
+                    <h:inputText id="password" value="#{clienteController.selected.password}" title="#{bundle.CreateClienteTitle_password}" required="true" requiredMessage="#{bundle.CreateClienteRequiredMessage_password}"/>
+                    
+                    
+                    <h:outputLabel value="#{bundle.CreateClienteLabel_estado}" for="estado" />
+                    <h:selectOneMenu id="estado" value="#{clienteController.selected.estado}" title="#{bundle.CreateClienteTitle_estado}" required="true" requiredMessage="#{bundle.CreateClienteRequiredMessage_estado}">
+                        <f:selectItems value="#{estadoController.listEstado}" var="item" itemValue="#{item}"  itemLabel="#{item.nombre}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                    </center>
+            </p:panel>
+                <br />
+                <br/>
+                <p:panel>
+                    <div align="center">
+                        <h:commandButton action="#{clienteController.create}" value="Guardar" />
+                    </div>
+                </p:panel>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
