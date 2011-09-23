@@ -32,7 +32,7 @@ public class PromocionFacade {
      
         Query q=em.createQuery("update Promocion p set p.diaFin=:fin,p.diaInicio=:inicio,p.precioPublico=:precio,p.promocionPK.idArticulo=:prom where p.promocionPK.id=:key",Promocion.class);
         q.setParameter("fin", promocion.getDiaFin());
-        q.setParameter("inicio",promocion.getDiaFin());
+        q.setParameter("inicio",promocion.getDiaInicio());
         q.setParameter("precio",promocion.getPrecioPublico());
         q.setParameter("key",promocion.getPromocionPK().getId());
         q.setParameter("prom",promocion.getPromocionPK().getIdArticulo());
