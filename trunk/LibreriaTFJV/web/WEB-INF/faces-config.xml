@@ -39,8 +39,13 @@
             <base-name>/Promocion</base-name>
             <var>bundle</var>
         </resource-bundle>
+        <resource-bundle>
+            <base-name>/Descuento</base-name>
+            <var>bundle</var>
+        </resource-bundle>
     </application>
 </faces-config>
+
 
 
 
