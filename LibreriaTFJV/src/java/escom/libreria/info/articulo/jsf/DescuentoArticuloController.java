@@ -70,9 +70,9 @@ public class DescuentoArticuloController implements Serializable {
         return "List";
     }
 
-    public String prepareView() {
-        current = (DescuentoArticulo)getItems().getRowData();
-        selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
+    public String prepareView(DescuentoArticulo p) {
+      current=p;
+       
         return "View";
     }
 
@@ -84,18 +84,19 @@ public class DescuentoArticuloController implements Serializable {
 
     public String create() {
         try {
+            current.setIdArticulo(current.getArticulo().getId());
             getFacade().create(current);
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Descuento").getString("DescuentoArticuloCreated"));
-            return prepareCreate();
+            return prepareView(current);
         } catch (Exception e) {
             JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Descuento").getString("PersistenceErrorOccured"));
             return null;
         }
     }
 
-    public String prepareEdit() {
-        current = (DescuentoArticulo)getItems().getRowData();
-        selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
+    public String prepareEdit(DescuentoArticulo p) {
+      current=p;
+       
         return "Edit";
     }
 
@@ -110,11 +111,13 @@ public class DescuentoArticuloController implements Serializable {
         }
     }
 
-    public String destroy() {
-        current = (DescuentoArticulo)getItems().getRowData();
-        selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
-        performDestroy();
-        recreateModel();
+    public String destroy(DescuentoArticulo p) {
+      current=p;
+       
+        //performDestroy();
+        //recreateModel();
+      JsfUtil.addSuccessMessage("Descuento Eliminado Satisfactoriamente");
+        getFacade().remove(current);
         return "List";
     }
 

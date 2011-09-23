@@ -5,6 +5,7 @@ import escom.libreria.info.articulo.jsf.util.JsfUtil;
 import escom.libreria.info.articulo.jsf.util.PaginationHelper;
 import escom.libreria.info.articulo.ejb.ImpuestoFacade;
 import java.io.Serializable;
+import java.util.List;
 
 import java.util.ResourceBundle;
 import javax.ejb.EJB;
@@ -40,7 +41,7 @@ public class ImpuestoController implements Serializable {
     }
 
     public List<Impuesto> getListaImpuesto(){
-        return getFacade().findAll():
+        return getFacade().findAll();
     }
 
     private ImpuestoFacade getFacade() {
@@ -70,9 +71,9 @@ public class ImpuestoController implements Serializable {
         return "List";
     }
 
-    public String prepareView() {
-        current = (Impuesto)getItems().getRowData();
-        selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
+    public String prepareView(Impuesto p) {
+        current = p;//(Impuesto)getItems().getRowData();
+        //selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "View";
     }
 
@@ -84,18 +85,19 @@ public class ImpuestoController implements Serializable {
 
     public String create() {
         try {
+            current.setIdArticulo(current.getArticulo().getId());
             getFacade().create(current);
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Descuento").getString("ImpuestoCreated"));
-            return prepareCreate();
+            return prepareView(current);
         } catch (Exception e) {
             JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Descuento").getString("PersistenceErrorOccured"));
             return null;
         }
     }
 
-    public String prepareEdit() {
-        current = (Impuesto)getItems().getRowData();
-        selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
+    public String prepareEdit(Impuesto p) {
+        current = p;//(Impuesto)getItems().getRowData();
+        //selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "Edit";
     }
 
@@ -110,11 +112,13 @@ public class ImpuestoController implements Serializable {
         }
     }
 
-    public String destroy() {
-        current = (Impuesto)getItems().getRowData();
-        selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
-        performDestroy();
-        recreateModel();
+    public String destroy(Impuesto p) {
+        current =p;// (Impuesto)getItems().getRowData();
+        //selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
+        //performDestroy();
+        //recreateModel();
+        getFacade().remove(current);
+        JsfUtil.addSuccessMessage("Impuesto eliminado satisfactoriamente");
         return "List";
     }
 
