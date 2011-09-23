@@ -28,6 +28,7 @@ public class ArticuloController implements Serializable {
     @EJB private escom.libreria.info.articulo.ejb.ArticuloFacade ejbFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
+    private int formward;//local
 
     public ArticuloController() {
     }
@@ -67,14 +68,28 @@ public class ArticuloController implements Serializable {
     }
 
     public String prepareList() {
+        String ir=null;
+        if(formward==1){
         recreateModel();
         return "List";
+        }else if(formward==2){
+           
+            ir="/promocion/Create";
+             formward=1;
+        }else{
+             ir="/promocion/Edit";
+        }
+        
+         return ir;
     }
 
-    public String prepareView(Articulo p) {
+    public String prepareView(Articulo p,int go) {
       current=p;
+      formward=go;
+      //System.out.println("descripcion:"+current.getDescripcion());
        // selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
-        return "View";
+
+        return "/articulo/View";
     }
 
     public String prepareCreate() {
@@ -87,7 +102,7 @@ public class ArticuloController implements Serializable {
         try {
             getFacade().create(current);
             JsfUtil.addSuccessMessage(("Articulo Created"));
-            return prepareView(current);
+            return prepareView(current,1);
         } catch (Exception e) {
             JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
             return null;
