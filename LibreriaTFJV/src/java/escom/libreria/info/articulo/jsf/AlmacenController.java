@@ -4,6 +4,8 @@ import escom.libreria.info.articulo.jpa.Almacen;
 import escom.libreria.info.articulo.jsf.util.JsfUtil;
 import escom.libreria.info.articulo.jsf.util.PaginationHelper;
 import escom.libreria.info.articulo.ejb.AlmacenFacade;
+import java.io.Serializable;
+import java.util.List;
 
 import java.util.ResourceBundle;
 import javax.ejb.EJB;
@@ -19,7 +21,7 @@ import javax.faces.model.SelectItem;
 
 @ManagedBean (name="almacenController")
 @SessionScoped
-public class AlmacenController {
+public class AlmacenController implements Serializable{
 
     private Almacen current;
     private DataModel items = null;
@@ -36,6 +38,9 @@ public class AlmacenController {
             selectedItemIndex = -1;
         }
         return current;
+    }
+    public List<Almacen> getListaAlmacen(){
+        return getFacade().findAll();
     }
 
     private AlmacenFacade getFacade() {
@@ -65,9 +70,9 @@ public class AlmacenController {
         return "List";
     }
 
-    public String prepareView() {
-        current = (Almacen)getItems().getRowData();
-        selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
+    public String prepareView(Almacen p) {
+        current=p;
+       // selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "View";
     }
 
@@ -79,23 +84,25 @@ public class AlmacenController {
 
     public String create() {
         try {
+            current.setIdArticulo(current.getArticulo().getId());
             getFacade().create(current);
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Almacen").getString("AlmacenCreated"));
-            return prepareCreate();
+            return prepareView(current);
         } catch (Exception e) {
             JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Almacen").getString("PersistenceErrorOccured"));
             return null;
         }
     }
 
-    public String prepareEdit() {
-        current = (Almacen)getItems().getRowData();
-        selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
+    public String prepareEdit(Almacen p) {
+        current=p;
+        //selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "Edit";
     }
 
     public String update() {
         try {
+            current.setIdArticulo(current.getArticulo().getId());
             getFacade().edit(current);
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Almacen").getString("AlmacenUpdated"));
             return "View";
@@ -105,11 +112,13 @@ public class AlmacenController {
         }
     }
 
-    public String destroy() {
-        current = (Almacen)getItems().getRowData();
-        selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
+    public String destroy(Almacen p) {
+        current=p;
+        /*selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         performDestroy();
-        recreateModel();
+        recreateModel();*/
+        getFacade().remove(current);
+        JsfUtil.addSuccessMessage("Almacen eliminado satisfacotiramente");
         return "List";
     }
 
