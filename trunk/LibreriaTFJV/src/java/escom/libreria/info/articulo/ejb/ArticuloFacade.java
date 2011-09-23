@@ -28,6 +28,7 @@ public class ArticuloFacade {
     }
 
     public void edit(Articulo articulo) {
+
         em.merge(articulo);
     }
 
