@@ -166,3 +166,24 @@ ul.MenuBarHorizontal iframe
 	/* [disabled]background: #FFF; */
 	}
 }
+
+
+.textoNEGRO{
+    font-family: "Arial Narrow";
+	font-size: 15px;
+	font-weight: normal;
+	color: black;
+	text-decoration: none;
+        font-weight: bold;
+
+}
+
+.textoROJO{
+    font-family: "Arial Narrow";
+	font-size: 15px;
+	font-weight: normal;
+	color: #da2a2a;
+	text-decoration: none;
+        font-weight: bold;
+
+}
