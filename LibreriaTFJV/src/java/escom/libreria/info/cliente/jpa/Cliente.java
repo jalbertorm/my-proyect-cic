@@ -53,7 +53,7 @@ public class Cliente implements Serializable {
     @Basic(optional = false)
     @Column(name = "MATERNO")
     private String materno;
-    @Basic(optional = false)
+   
     @Column(name = "TELEFONO")
     private String telefono;
     @Column(name = "FAX")
