@@ -13,6 +13,7 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.component.UIComponent;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
@@ -29,6 +30,17 @@ public class ClienteController implements Serializable{
     @EJB private escom.libreria.info.cliente.ejb.ClienteFacade ejbFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
+    private String confirmaCorreo;
+   
+
+    public String getConfirmaCorreo() {
+        return confirmaCorreo;
+    }
+
+    public void setConfirmaCorreo(String confirmaCorreo) {
+        this.confirmaCorreo = confirmaCorreo;
+    }
+    
 
     public ClienteController() {
     }
@@ -67,9 +79,16 @@ public class ClienteController implements Serializable{
         return pagination;
     }
 
-    public String prepareList() {
-        recreateModel();
+    public String prepareList(int go) {
+       // recreateModel();
+        if(go==1)
         return "List";
+        else{
+        
+           return "./../../" ;
+        }
+       
+
     }
 
     public String prepareView(Cliente p) {
@@ -80,17 +99,28 @@ public class ClienteController implements Serializable{
 
     public String prepareCreate() {
         current = new Cliente();
-        selectedItemIndex = -1;
+    //    selectedItemIndex = -1;
         return "Create";
     }
 
     public String create() {
         try {
-            current.setEstatus(true);
-            current.setFechaAlta(new Date());
-            getFacade().create(current);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Cliente").getString("ClienteCreated"));
-            return prepareView(current);
+            if(confirmaCorreo.equals(current.getEmail())){
+                
+                 current.setEstatus(true);
+                 current.setFechaAlta(new Date());
+                 if(getFacade().find(current.getId())==null){
+                   getFacade().create(current);
+                   JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Cliente").getString("ClienteCreated"));
+                   return prepareView(current);
+                 }else{
+                     JsfUtil.addErrorMessage("Campo Usuario repetido");
+                     current.setId(" ");
+                     return null;
+                 }
+            }
+           JsfUtil.addErrorMessage("El correo y la confirmacion no coinciden");
+           return null;
         } catch (Exception e) {
             JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Cliente").getString("PersistenceErrorOccured"));
             return null;

@@ -28,6 +28,16 @@ public class DescuentoArticuloController implements Serializable {
     @EJB private escom.libreria.info.articulo.ejb.DescuentoArticuloFacade ejbFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
+    private String correo;
+
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+    
 
     public DescuentoArticuloController() {
     }
