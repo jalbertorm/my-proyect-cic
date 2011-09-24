@@ -25,7 +25,7 @@
                 </div>
                 <br/> <br/>
                 <p:panel header="CATALOGO DE CLIENTE">
-                    <p:dataTable value="#{clienteController.listaClientes}" var="item" paginator="true" rows="5">
+                    <p:dataTable value="#{clienteController.listaClientes}" var="item" paginator="true" rows="5" >
                    
                     <p:column style="width:15px;">
                         <f:facet name="header">
@@ -33,34 +33,23 @@
                         </f:facet>
                         <h:outputText value="#{item.nombre} #{item.paterno} #{item.materno}"/>
                     </p:column>
-                    <p:column style="width:15px;">
+                        <p:column style="width:12%">
                         <f:facet name="header">
-                            <h:outputText value="#{bundle.ListClienteTitle_email}"/>
+                            <h:outputText value="EMAIL"/>
                         </f:facet>
                         <h:outputText value="#{item.email}"/>
                     </p:column>
                    
                     <p:column>
                         <f:facet name="header">
-                            <h:outputText value="#{bundle.ListClienteTitle_telefono}"/>
+                            <h:outputText value="TELEFONO:"/>
                         </f:facet>
                         <h:outputText value="#{item.telefono}"/>
                     </p:column>
                     
-                       
                     <p:column>
                         <f:facet name="header">
-                            <h:outputText value="#{bundle.ListClienteTitle_estatus}"/>
-                        </f:facet>
-                        <h:outputText value="NO" rendered="#{item.estatus==false}"/>
-                         <h:outputText value="SI" rendered="#{item.estatus}"/>
-                    </p:column>
-                   
-                    
-                    
-                    <p:column>
-                        <f:facet name="header">
-                            <h:outputText value="#{bundle.ListClienteTitle_estado}"/>
+                            <h:outputText value="ESTADO"/>
                         </f:facet>
                         <h:outputText value="#{item.estado.nombre}"/>
                     </p:column>

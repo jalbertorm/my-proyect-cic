@@ -17,10 +17,12 @@ xmlns:p="http://primefaces.prime.com.tr/ui">
             <h:form id="articuloview">
 
                 <br/><br/><br/>
-                <p:panel header="VER ARTICULO">
+               
+                       <p:tabView>
                     <center>
+                        <p:tab title="Descripci&oacute;n General">
                     <h:panelGrid columns="2" cellspacing="12">
-                    
+
                     <h:outputText value="Unidad:"/>
                     <h:outputText value="#{articuloController.selected.unidad}" title="#{bundle.ViewArticuloTitle_unidad}"/>
                     <h:outputText value="Divisa:"/>
@@ -37,13 +39,23 @@ xmlns:p="http://primefaces.prime.com.tr/ui">
                     </h:outputText>
                     <h:outputText value="Proveedor:"/>
                     <h:outputText value="#{articuloController.selected.idProveedor.nombre}" title="#{bundle.ViewArticuloTitle_idProveedor}"/>
+                    </h:panelGrid>
+                        </p:tab>
+                        <p:tab title="Detalle">
+                            <h:panelGrid columns="2" cellspacing="15">
                     <h:outputText value="Publicacion:"/>
                     <h:outputText value="#{articuloController.selected.idIdc}" title="#{bundle.ViewArticuloTitle_idIdc}"/>
                     <h:outputText value="Tipo Articulo:"/>
                     <h:outputText value="#{articuloController.selected.idTipo.descripcion}" title="#{bundle.ViewArticuloTitle_idTipo}"/>
-                </h:panelGrid>
+                    </h:panelGrid>
+                        </p:tab>
+                        <p:tab title="Comentario">
+                            
+                        </p:tab>
+                
                     </center>
-                </p:panel>
+                       </p:tabView>
+                
                 <br/><br/>
                 <div align="center">
                     <p:panel >
