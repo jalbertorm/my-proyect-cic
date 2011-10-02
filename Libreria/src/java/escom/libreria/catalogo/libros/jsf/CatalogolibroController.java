@@ -243,7 +243,7 @@ public class CatalogolibroController {
 
     public String prepareEdit(Catalogolibro libro) {
         bandera=true;
-        current = libro;//(Catalogolibro)getItems().getRowData();
+        current=libro;//(Catalogolibro)getItems().getRowData();
        // selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "/catalogolibro/Edit";
     }
@@ -283,8 +283,10 @@ public class CatalogolibroController {
                  return "/catalogolibro/View";
 
                 }
-                 if(bandera==true)bandera=false;
-                return "/catalogolibro/Edit";
+                else{
+                   bandera=false;
+                  return "/catalogolibro/Edit";
+                }
         } catch (Exception e) {
             JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
             return null;

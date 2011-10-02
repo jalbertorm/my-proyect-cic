@@ -4,6 +4,7 @@
  */
 
 package librearia.admnistrador.sistema;
+import java.io.IOException;
 import java.util.*;
 import escom.libreria.administrado.roles.jpa.Idpaginas;
 import escom.libreria.administrado.roles.jpa.RolesPaginas;
@@ -15,6 +16,8 @@ import escom.libreria.carrito.compras.jsf.CarritocompraController;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
@@ -61,9 +64,11 @@ public class SistemeaControllor {
     public String CerrarSession(){
         carritocompraController.setBandeja(null);
         ExternalContext externalContex = getContexto();
-        HttpSession session = ( HttpSession)externalContex.getSession(false);
-        session.invalidate();
-        return "./../index.xhtml";
+        System.out.println(externalContex.getContext().toString());
+        return externalContex.getContext().toString();
+       // HttpSession session = ( HttpSession)externalContex.getSession(false);
+        //session.invalidate();
+       // return "./../login/Create";
     }
 
 
@@ -110,33 +115,35 @@ public class SistemeaControllor {
     }
 
     public String validar(){
-
-       
-        usuario=usuarioFacade.validar(user,password);
-        usuario.setId(usuario.getId());
-        usuario.setNombre(usuario.getNombre());
-        usuario.setPassword(usuario.getPassword());
-        usuario.setMaterno(usuario.getMaterno());
-        usuario.setAppaterno(usuario.getAppaterno());
-        usuario.setCorreo(usuario.getCorreo());
-        usuario.setTelefono(usuario.getTelefono());
-        usuario.setUsuario(usuario.getUsuario());
-
-
-
-       if(usuario!=null){
-
-         setUsuario(usuario);
-         listaPaginas=asignarRoles(usuario);
-         bandeja =carritocompraController.getNewBandejaLibros();//Garantizamos que se crea un carrito por Session
-         setBandeja(bandeja);
-       }
-        else{
-           JsfUtil.addErrorMessage("Usted no hes usuario");
-           return "./../index.xhtml";
-       }
-        user="";password="";
-        return "/templates/index";
+        try {
+            usuario = usuarioFacade.validar(user, password);
+            usuario.setId(usuario.getId());
+            usuario.setNombre(usuario.getNombre());
+            usuario.setPassword(usuario.getPassword());
+            usuario.setMaterno(usuario.getMaterno());
+            usuario.setAppaterno(usuario.getAppaterno());
+            usuario.setCorreo(usuario.getCorreo());
+            usuario.setTelefono(usuario.getTelefono());
+            usuario.setUsuario(usuario.getUsuario());
+            if (usuario != null) {
+                setUsuario(usuario);
+                listaPaginas = asignarRoles(usuario);
+                bandeja = carritocompraController.getNewBandejaLibros(); //Garantizamos que se crea un carrito por Session
+                setBandeja(bandeja);
+            } else {
+                JsfUtil.addErrorMessage("Usted no hes usuario");
+                return "/index.xhtml";
+            }
+            user = "";
+            password = "";
+            ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+            String go = externalContext.getRequestContextPath() + "/faces/carritocompra/CatalogoLibro.xhtml";
+            externalContext.redirect(go);
+            return "./../templates/index.xhtml";
+        } catch (IOException ex) {
+            Logger.getLogger(SistemeaControllor.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
      
     }
 
