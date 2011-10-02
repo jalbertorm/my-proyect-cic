@@ -21,7 +21,7 @@
                 <center>
                     <h:panelGrid columns="2" cellspacing="15">
                    
-                    <h:outputLabel value="#{bundle.CreateAlmacenLabel_existencia}" for="existencia" />
+                        <h:outputLabel value="Existencia:" for="existencia"  styleClass="textoNEGRO"/>
                     <h:selectBooleanCheckbox id="existencia" value="#{almacenController.selected.existencia}" title="#{bundle.CreateAlmacenTitle_existencia}" required="true" requiredMessage="#{bundle.CreateAlmacenRequiredMessage_existencia}"/>
                     <h:outputLabel value="#{bundle.CreateAlmacenLabel_enConsigna}" for="enConsigna" />
                     <h:selectBooleanCheckbox id="enConsigna" value="#{almacenController.selected.enConsigna}" title="#{bundle.CreateAlmacenTitle_enConsigna}" required="true" requiredMessage="#{bundle.CreateAlmacenRequiredMessage_enConsigna}"/>
