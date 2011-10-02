@@ -28,26 +28,29 @@
               <img src="./../resources/css/images/header_2.jpg" width="744" height="48" alt="sdsds" />
           </div><!-- end header -->
           <dl id="browse">
+              <h:form id="adminMenu">
               <dt>ADMINISTRACION </dt>
               <dd class="first">
                   
-                  <!--<h:commandLink value="hOLA" action=""/>-->
-                  <a href="./catalogolibro/List.xhtml">ADMIN. LIBRO</a>
+                  <h:commandLink  action="./catalogolibro/List.xhtml" value="ADMIN. LIBRO" rendered="#{sistemeaControllor.paginaAutorizada(1)}"/>
+                 
               </dd>
-              <dd><a href="./usuario/List.xhtml">ADMIN. USUARIO</a></dd>
-              <dd><a href="http://www.freewebsitetemplates.com">ADMIN. PERFIL</a></dd>
-              <dd class="last"><a href="http://www.freewebsitetemplates.com">ADMIN. ROLES</a></dd>
+              <dd> <h:commandLink  action="./usuario/List.xhtml" value="ADMIN. USUARIO" rendered="#{sistemeaControllor.paginaAutorizada(2)}"/></dd>
+              <dd><h:commandLink  action="#" value="ADMIN. PERFIL" rendered="#{sistemeaControllor.paginaAutorizada(5)}"/></dd>
+              <dd class="last">
+                  <h:commandLink  action="#" value="ADMIN. ROLES" rendered="#{sistemeaControllor.paginaAutorizada(5)}"/></dd>
               <dt>CATAGORIA USUARIO</dt>
               <dd class="first"> 
-                 <h:form id="goComprar">
+               
                        <h:commandLink value="CARRITO COMPRA" action="#{carritocompraController.crearCarritoCompra(sistemeaControllor.usuario)}"></h:commandLink>
-                  </h:form>
+                 
               </dd>
               <dd><a>  M&aacute;s Comprado</a></dd>
               <dd>  <a>Libros Resientes</a></dd>
 
 
               <dd class="last"><a>Recomendaci&oacute;nes</a></dd>
+              <dt><h:commandLink value="CERRRAR SESSION" action="#{sistemeaControllor.CerrarSession}" style="color:#ffffff;" immediate="true"/> </dt>
 
 
               <dt>LIBRO FAVORITO</dt>
@@ -61,6 +64,7 @@
                     <div class="softright"><input type="image" src="./../resources/css/images/btn_search.gif" /></div>
                 </form>
               </dd>
+              </h:form>
           </dl>
 
           <div id="body">
@@ -92,7 +96,7 @@
 
               &nbsp;
               <div id="footnav">
-                  <a href="http://www.freewebsitetemplates.com">Legal</a> | <a href="http://www.freewebsitetemplates.com">ESCOM</a>
+                  <a href="#">Legal</a> | <a href="#">ESCOM</a>
               </div><!-- end footnav -->
 
           </div><!-- end footer -->
