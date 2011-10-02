@@ -21,13 +21,13 @@
                 <center>
                     <h:panelGrid columns="2" cellspacing="15">
 
-                    <h:outputLabel value="#{bundle.CreateAlmacenLabel_existencia}" for="existencia" />
+                    <h:outputLabel value="existencia}" for="existencia" />
                     <h:selectBooleanCheckbox id="existencia" value="#{almacenController.selected.existencia}" title="#{bundle.CreateAlmacenTitle_existencia}" required="true" requiredMessage="#{bundle.CreateAlmacenRequiredMessage_existencia}"/>
-                    <h:outputLabel value="#{bundle.CreateAlmacenLabel_enConsigna}" for="enConsigna" />
+                    <h:outputLabel value="enConsigna}" for="enConsigna" />
                     <h:selectBooleanCheckbox id="enConsigna" value="#{almacenController.selected.enConsigna}" title="#{bundle.CreateAlmacenTitle_enConsigna}" required="true" requiredMessage="#{bundle.CreateAlmacenRequiredMessage_enConsigna}"/>
-                    <h:outputLabel value="#{bundle.CreateAlmacenLabel_enFirme}" for="enFirme" />
+                    <h:outputLabel value="enFirme}" for="enFirme" />
                     <h:selectBooleanCheckbox id="enFirme" value="#{almacenController.selected.enFirme}" title="#{bundle.CreateAlmacenTitle_enFirme}" required="true" requiredMessage="#{bundle.CreateAlmacenRequiredMessage_enFirme}"/>
-                    <h:outputLabel value="#{bundle.CreateAlmacenLabel_articulo}" for="articulo" />
+                    <h:outputLabel value="articulo}" for="articulo" />
                     <h:selectOneMenu id="articulo" value="#{almacenController.selected.articulo}" title="#{bundle.CreateAlmacenTitle_articulo}" required="true" requiredMessage="#{bundle.CreateAlmacenRequiredMessage_articulo}">
                         <f:selectItems value="#{articuloController.listArticulos}" var="item" itemValue="#{item}" itemLabel="#{item.idTipo.descripcion}"/>
                     </h:selectOneMenu>
